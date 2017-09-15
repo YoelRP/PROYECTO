@@ -3,13 +3,16 @@
 //DbC maquina de estados 
 // 
 `include "Defintions.v" 
-`timescale 1ns / 1ps
+//`timescale 1ns / 1ps
 //------------------------------------------------
 
 
-module DbCPort 
+module DbCPortStatMachine
 ( 
 input wire clock ,
 input wire DCI   ,
 input wire CSC   
 );
+reg [4:0]   rResult;
+
+
