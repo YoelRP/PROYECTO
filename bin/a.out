@@ -1,0 +1,96 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x18bb690 .scope module, "tester" "tester" 2 1;
+ .timescale 0 0;
+v0x1902220_0 .var "CEC_reg", 0 0;
+v0x19022c0_0 .var "CSC_reg", 0 0;
+v0x1902370_0 .var "DCE_reg", 0 0;
+v0x1902420_0 .var "DCI_reg", 0 0;
+v0x1902500_0 .var "PED_reg", 0 0;
+v0x19025b0_0 .var "PLC_reg", 0 0;
+v0x1902630_0 .var "PRC_reg", 0 0;
+v0x19026e0_0 .var "clk", 0 0;
+v0x19027e0_0 .var "reset", 0 0;
+S_0x18bb780 .scope module, "DbCPortStatMachine_instance" "DbCPortStatMachine" 2 28, 3 10, S_0x18bb690;
+ .timescale 0 0;
+v0x18cd510_0 .net "CEC", 0 0, v0x1902220_0; 1 drivers
+v0x1901d20_0 .net "CSC", 0 0, v0x19022c0_0; 1 drivers
+v0x1901dc0_0 .net "DCE", 0 0, v0x1902370_0; 1 drivers
+v0x1901e60_0 .net "DCI", 0 0, v0x1902420_0; 1 drivers
+v0x1901f10_0 .net "PED", 0 0, v0x1902500_0; 1 drivers
+v0x1901fb0_0 .net "PLC", 0 0, v0x19025b0_0; 1 drivers
+v0x1902090_0 .net "PRC", 0 0, v0x1902630_0; 1 drivers
+v0x1902130_0 .net "clock", 0 0, v0x19026e0_0; 1 drivers
+    .scope S_0x18bb690;
+T_0 ;
+    %set/v v0x19027e0_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_0x18bb690;
+T_1 ;
+    %set/v v0x1902420_0, 0, 1;
+    %end;
+    .thread T_1;
+    .scope S_0x18bb690;
+T_2 ;
+    %set/v v0x19022c0_0, 0, 1;
+    %end;
+    .thread T_2;
+    .scope S_0x18bb690;
+T_3 ;
+    %set/v v0x19025b0_0, 0, 1;
+    %end;
+    .thread T_3;
+    .scope S_0x18bb690;
+T_4 ;
+    %set/v v0x1902630_0, 0, 1;
+    %end;
+    .thread T_4;
+    .scope S_0x18bb690;
+T_5 ;
+    %set/v v0x1902370_0, 0, 1;
+    %end;
+    .thread T_5;
+    .scope S_0x18bb690;
+T_6 ;
+    %set/v v0x1902500_0, 0, 1;
+    %end;
+    .thread T_6;
+    .scope S_0x18bb690;
+T_7 ;
+    %set/v v0x1902220_0, 0, 1;
+    %end;
+    .thread T_7;
+    .scope S_0x18bb690;
+T_8 ;
+    %set/v v0x19026e0_0, 0, 1;
+    %end;
+    .thread T_8;
+    .scope S_0x18bb690;
+T_9 ;
+    %vpi_call 2 14 "$dumpfile", "tester.vcd";
+    %vpi_call 2 15 "$dumpvars", 1'sb0, S_0x18bb690;
+    %delay 17, 0;
+    %set/v v0x19027e0_0, 1, 1;
+    %delay 513, 0;
+    %vpi_call 2 19 "$finish";
+    %end;
+    .thread T_9;
+    .scope S_0x18bb690;
+T_10 ;
+    %delay 1, 0;
+    %load/v 8, v0x19026e0_0, 1;
+    %inv 8, 1;
+    %set/v v0x19026e0_0, 8, 1;
+    %jmp T_10;
+    .thread T_10;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "DbCPortStateMachine_tb.v";
+    "DbCPortStateMachine.v";

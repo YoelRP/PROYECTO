@@ -1,26 +1,38 @@
-module test;
+module tester;
 
   /* Make a reset that pulses once. */
   reg reset = 0;
+  reg DCI_reg   = 0;
+  reg CSC_reg   = 0;
+  reg PLC_reg   = 0;
+  reg PRC_reg   = 0;
+  reg DCE_reg   = 0;
+  reg PED_reg   = 0;
+  reg CEC_reg   = 0;
+  reg clk = 0;
   initial begin
-     $dumpfile("test.vcd");
-     $dumpvars(0,test);
+     $dumpfile("tester.vcd");
+     $dumpvars(0,tester);
 
      # 17 reset = 1;
-     # 11 reset = 0;
-     # 29 reset = 1;
-     # 5  reset =0;
+  
      # 513 $finish;
   end
 
   /* Make a regular pulsing clock. */
-  reg clk = 0;
+
   always #1 clk = !clk;
 
-  wire [7:0] value;
-  counter c1 (value, clk, reset);
 
-  initial
-     $monitor("At time %t, value = %h (%0d)",
-              $time, value, value);
+
+DbCPortStatMachine DbCPortStatMachine_instance ( 
+.clock (  clk     ),
+.DCI   (  DCI_reg ),
+.CSC   (  CSC_reg ),
+.PLC   (  PLC_reg ),
+.PRC   (  PRC_reg ),
+.DCE   (  DCE_reg ), 
+.PED   (  PED_reg ),
+.CEC   (  CEC_reg )
+);
 endmodule // test
