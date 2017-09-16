@@ -18,30 +18,36 @@ input wire DCE   ,
 input wire PED   ,
 input wire CEC  
 );
-reg [3:0] estado;
+reg [4:0] state;
 
-/*
+
 always @ (posedge clock)
-begin :
-next_state = 4'b0000;
-case(state)
-   IDLE : if (req_0 == 1'b1) begin
-                next_state = GNT0;
-              end else if (req_1 == 1'b1) begin
-                next_state= GNT1;
-              end else begin
-                next_state = IDLE;
-              end
-   GNT0 : if (req_0 == 1'b1) begin
-                next_state = GNT0;
-              end else begin
-                next_state = IDLE;
-              end
-   GNT1 : if (req_1 == 1'b1) begin
-                next_state = GNT1;
-              end else begin
-                next_state = IDLE;
-              end
-   default : next_state = IDLE;
-  endcase*/
+begin 
+if (DCE == 1'b0) begin
+  state = `DBC_OFF; // move to DBC_OFF state 
+  end 	
+
+end
 endmodule
+ /*else
+case(state)
+   `DBC_OFF : if (DCE == 1'b1) begin
+                state = `DBC_DISCONNECTED;
+             end
+   `DBC_DISCONNECTED : if (DCE == 1'b0) begin
+   						state = `DBC_OFF;
+					end else if (CSC == 1'b1) begin
+                		state = `DBC_ENABLED;
+            		     end else 
+            		    state = `DBC_DISCONNECTED; 
+      default : state = `DBC_OFF;
+  endcase
+end*/
+
+/*`define DBC_DISABLED 5'b11000	
+`define DBC_OFF   5'b00000	
+`define DBC_DISCONNECTED   5'b10000	
+`define DBC_ERROR  5'b11000	
+`define DBC_RESETTING   5'b11010	
+`define DBC_CONFIURED   5'b11101	
+*/
