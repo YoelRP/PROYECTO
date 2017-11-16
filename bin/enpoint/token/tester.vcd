@@ -1,0 +1,64 @@
+$date
+	Thu Nov 16 04:34:22 2017
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module tester $end
+$var wire 7 ! addr1 [6:0] $end
+$var wire 4 " endp1 [3:0] $end
+$var wire 1 # err1 $end
+$var wire 1 $ in1 $end
+$var reg 24 % data1 [23:0] $end
+$scope module token_in_intance $end
+$var wire 24 & data [23:0] $end
+$var wire 5 ' sum_crc [4:0] $end
+$var reg 7 ( addr [6:0] $end
+$var reg 5 ) crc1 [4:0] $end
+$var reg 5 * crcBASE [4:0] $end
+$var reg 4 + endp [3:0] $end
+$var reg 1 , eroare $end
+$var reg 1 - err $end
+$var reg 1 . iesire $end
+$var reg 1 / in $end
+$var reg 8 0 pid [7:0] $end
+$scope module CRC5_D11_intance $end
+$var wire 11 1 Data [10:0] $end
+$var wire 5 2 crc [4:0] $end
+$var reg 5 3 c [4:0] $end
+$var reg 11 4 d [10:0] $end
+$var reg 5 5 newcrc [4:0] $end
+$var reg 5 6 nextCRC5_D11 [4:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 6
+b0 5
+b0 4
+b0 3
+b0 2
+b0 1
+b10010110 0
+1/
+1.
+1-
+1,
+b0 +
+b0 *
+b1101 )
+b0 (
+b0 '
+b100101100000000000001101 &
+b100101100000000000001101 %
+1$
+1#
+b0 "
+b0 !
+$end
+#513
