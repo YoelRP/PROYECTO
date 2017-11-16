@@ -1,0 +1,34 @@
+$date
+	Wed Nov 15 23:40:28 2017
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module tester $end
+$var wire 8 ! pid_out [7:0] $end
+$var reg 1 " ack_value $end
+$scope module handshacke_intance $end
+$var wire 1 # ack $end
+$var reg 8 $ data [7:0] $end
+$var reg 8 % pid [7:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b101101 %
+b101101 $
+1#
+1"
+b101101 !
+$end
+#40
+b10100101 %
+b10100101 !
+b10100101 $
+0"
+0#
+#553
