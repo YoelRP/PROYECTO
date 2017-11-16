@@ -1,0 +1,36 @@
+$date
+	Wed Nov 15 20:16:41 2017
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module tester $end
+$var wire 16 ! wcrc [15:0] $end
+$var reg 16 " crcBASE [15:0] $end
+$var reg 1024 # rmesaj [1023:0] $end
+$scope module CRC16_D1024_intance $end
+$var wire 1024 $ Data [1023:0] $end
+$var wire 16 % crc [15:0] $end
+$var reg 16 & c [15:0] $end
+$var reg 1024 ' d [1023:0] $end
+$var reg 16 ( newcrc [15:0] $end
+$var reg 16 ) nextCRC16_D1024 [15:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b10110110011001 )
+b10110110011001 (
+b111111111111101011111111 '
+b0 &
+b0 %
+b111111111111101011111111 $
+b111111111111101011111111 #
+b0 "
+b10110110011001 !
+$end
+#513

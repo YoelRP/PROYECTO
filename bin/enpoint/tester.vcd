@@ -1,0 +1,36 @@
+$date
+	Tue Nov 14 23:54:49 2017
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module tester $end
+$var wire 5 ! rcrc [4:0] $end
+$var reg 11 " rmesaj [10:0] $end
+$scope module mod_crc5_intance $end
+$var wire 11 # imesaj [10:0] $end
+$var reg 5 $ ocrc [4:0] $end
+$var reg 11 % rdata [10:0] $end
+$var reg 4 & ri [3:0] $end
+$var reg 4 ' rj [3:0] $end
+$var reg 4 ( rk [3:0] $end
+$var reg 5 ) rpolinom [4:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b101 )
+b101 (
+b1011 '
+b11 &
+bx0000000 %
+bx0 $
+b0 #
+b0 "
+bx0 !
+$end
+#513

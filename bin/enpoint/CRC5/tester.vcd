@@ -1,0 +1,36 @@
+$date
+	Wed Nov 15 18:17:03 2017
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module tester $end
+$var wire 5 ! wcrc [4:0] $end
+$var reg 5 " crcBASE [4:0] $end
+$var reg 11 # rmesaj [10:0] $end
+$scope module CRC5_D11_intance $end
+$var wire 11 $ Data [10:0] $end
+$var wire 5 % crc [4:0] $end
+$var reg 5 & c [4:0] $end
+$var reg 11 ' d [10:0] $end
+$var reg 5 ( newcrc [4:0] $end
+$var reg 5 ) nextCRC5_D11 [4:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b1111 )
+b1111 (
+b11111011011 '
+b0 &
+b0 %
+b11111011011 $
+b11111011011 #
+b0 "
+b1111 !
+$end
+#513

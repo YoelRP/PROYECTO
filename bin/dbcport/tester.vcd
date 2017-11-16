@@ -1,5 +1,5 @@
 $date
-	Sun Sep 17 18:29:40 2017
+	Mon Nov 13 13:47:48 2017
 $end
 $version
 	Icarus Verilog
@@ -34,12 +34,16 @@ $var wire 1 6 PRC $end
 $var wire 1 7 Reset_rcvd $end
 $var wire 1 8 clock $end
 $var wire 1 9 set_config_succesful $end
-$var reg 5 : state [4:0] $end
+$var reg 5 : rNew_state [4:0] $end
+$var reg 5 ; rstate [4:0] $end
+$scope begin FSM_SEQ $end
+$upscope $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
+bx ;
 bx :
 09
 08
@@ -72,6 +76,7 @@ b0 :
 1+
 18
 #2
+b0 ;
 0+
 08
 #3

@@ -20,7 +20,7 @@ module tester;
      $dumpvars(0,tester);
 
      # 17 reset = 1;
-  
+   
      # 513 $finish;
   end
 
