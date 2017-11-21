@@ -3,7 +3,7 @@ module tester;
   /* Make a reset that pulses once. */
 
     reg [23:0]data1 = 24'b100101100000000000001101;
-    wire [7:0]pid1;
+    wire in1;
     wire [6:0]addr1;
     wire [3:0]endp1;
     wire err1;
@@ -17,15 +17,17 @@ module tester;
   end
 
 
+  always #1 clk = !clk;
   /* Make a regular pulsing clock. */
 
 
-token_in token_in_intance (
-    .data (data1),
-    .pid (pid1),
-    .addr (addr1),
-    .endp (endp1),
-    .err  (err1)
+RAM RAM_intance (
+    .Clock (data1),
+    .iWriteEnable (in1),
+    .iReadAddress0 (addr1),
+    .iWriteAddress (endp1),
+    .iDataIn  (err1),
+    .oDataOut0 ()
   );
 
 
