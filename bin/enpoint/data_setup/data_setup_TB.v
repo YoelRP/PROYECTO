@@ -1,7 +1,7 @@
 module tester;
 
   /* Make a reset that pulses once. */
-  reg  [95:0] packet1 = 1048'hFFFFFFFFFFFFFFFFFFFAAACCCABBBBF ;
+  reg  [88:0] packet1 = 1048'hFFFFFFFFFFFFFFFFFFFAAACCCABBBBF ;
   wire [71:0] data1 ;
   wire data_error; 
 
@@ -13,7 +13,7 @@ module tester;
 
 
 
-Data_set_up_pack Data0_pack_intance (
+Data_set_up_pack Data_set_up_pack_intance (
  .data (data1),
  .packet  (packet1),
  .data_error(data_error) 

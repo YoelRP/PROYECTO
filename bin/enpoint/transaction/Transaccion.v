@@ -1,4 +1,6 @@
 `include "Defintions.v" 
+`include "Token.v" 
+`include "data_setup.v" 
 //este modulo es concido como targetsystem 
 module TS (
 
@@ -10,18 +12,19 @@ setup,
 firtsPachet, 
 data_out,
 setup_data,
-
+ack_out
 );
 input wire  clk;
 input wire rst;
-input wire [95:0] setup_data;
+input wire [88:0] setup_data;
 input wire [1047:0]data; 
 input wire [23:0] token;
 input wire [7:0]  setup; 
 input wire firtsPachet; 
-
 output reg [1047:0]data_out;
-
+output reg [7:0]ack_out;
+reg [63:0] enpoint_0IN; 
+reg [63:0] enpoint_0OUT; 
 reg [3:0]state,next_state;
 reg [6:0]addr;	
 reg [3:0]endp;
@@ -29,11 +32,12 @@ reg error;
 reg DATA_error;
 reg token_vald;
 reg [6:0]Myaddr ;
+reg startControl;
 wire [7:0]pid1;
     wire [6:0]addr1;
     wire [3:0]endp1;
     wire err1;
-  wire [71:0] data1 ;
+  wire [63:0] data1 ;
   wire data_error; 
 
 //estos son los estados y los valores valios de token no se trabajo con l
@@ -81,7 +85,7 @@ parameter [3:0]
   );
 
 
-Data_set_up_pack Data0_pack_intance (
+Data_set_up_pack Data_set_up_pack_intance (
  .data (data1),
  .packet  (setup_data),
  .data_error(data_error) 
@@ -94,9 +98,9 @@ end
 
 always @(posedge clk)
 begin 
-
+startControl = 1'b0 ;
 next_state = state;
-
+ack_out = 7'b0 ;
 Myaddr = 7'b1111111;
 	
 	case (state)
@@ -184,8 +188,19 @@ Myaddr = 7'b1111111;
 				begin
 				next_state =  IDLE; 
 				end
-			
-			end 		
+				
+				else 
+				begin
+				startControl = 1'b1;
+				//aqui necesito un wait del peor casi que dure control
+				next_state =  HANDSHAKE; 
+				end 
+			end 
+		HANDSHAKE: 	
+			begin 
+			ack_out = Handshake_ACK; 
+			next_state =  IDLE; 
+			end 			
 		endcase	
 		/**/
 end 
