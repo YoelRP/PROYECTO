@@ -37,25 +37,24 @@ always @(rclk)
        rrst =0 ;
 	 rdata = 0;
   	 rparameter_Block = 1;
-     rparameter_Block2 = 12;
-	  rbmRequestType [7:0] = 8'b00100001;
-	  rbRequest  = 8'h03 ;
-	  rwValue = 0;
-	  rwIndex = 0;
-	  rwLength = 2;
-	 renable = 1 ;
-       #5 
-       rrst =0 ;
-	 rdata = 0;
-  	 rparameter_Block = 1;
      rparameter_Block2 = 0;
-	  rbmRequestType [7:0] = 8'b10100001;
-	  rbRequest  = 8'h83 ;
+	  rbmRequestType [7:0] = 8'b00100001;
+	  rbRequest  = 8'h01 ;
 	  rwValue = 0;
 	  rwIndex = 0;
-	  rwLength = 2;
-	 renable = 1 ;
-	
+	  rwLength = 0;
+	 renable = 0 ;
+	 #5 
+	rrst =0 ;
+	rdata = 0;
+  	rparameter_Block = 32'b1101;
+    rparameter_Block2 = 0;
+	rbmRequestType [7:0] = 8'b00100001;
+	rbRequest  = 8'h01 ;
+	rwValue = 0;
+	rwIndex = 0;
+	rwLength = 0;
+	renable = 0 ;
 
 	  # 513 $finish;
   end
@@ -68,8 +67,7 @@ control control_intance (
 .data_out2 			(wdata_out2),
 .data_out3 			(wdata_out3),
 .parameter_Block 	(rparameter_Block),
-.parameter_Block2 	(rparameter_Block2),
-.enable              (renable)
+.parameter_Block2 	(rparameter_Block2)
 );
 
 

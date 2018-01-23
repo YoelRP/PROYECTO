@@ -3,29 +3,39 @@
 `include "data_setup.v" 
 //este modulo es concido como targetsystem 
 module TS (
-
+sync,
+sync2,
 clk,
 rst,
 data, 
 token,
-setup, 
-firtsPachet, 
+busy,
 data_out,
 setup_data,
-ack_out
+token_out,
+ 
 );
+input wire  busy;
 input wire  clk;
 input wire rst;
 input wire [88:0] setup_data;
 input wire [1047:0]data; 
 input wire [23:0] token;
-input wire [7:0]  setup; 
-input wire firtsPachet; 
+input wire [31:0]sync2;
+input wire [7:0] sync;
+
 output reg [1047:0]data_out;
-output reg [7:0]ack_out;
-reg [63:0] enpoint_0IN; 
-reg [63:0] enpoint_0OUT; 
-reg [3:0]state,next_state;
+output reg [7:0]token_out;
+
+reg dato_par ; 
+reg [1:0] speed ; // the states  00 low 01 full 10 super high speed 
+reg [7:0] alt_USB_Stack ; 
+reg [31:0] halted_enpoints_in;
+reg [31:0] halted_enpoints_out;
+reg [31:0] funcion_enpoints_in;
+reg [31:0] funcion_enpoints_out;
+reg [63:0] dato_atual ;
+reg [4:0]state,next_state;
 reg [6:0]addr;	
 reg [3:0]endp;
 reg error; 
@@ -33,27 +43,36 @@ reg DATA_error;
 reg token_vald;
 reg [6:0]Myaddr ;
 reg startControl;
+reg [3:0] last_token ;
 wire [7:0]pid1;
-    wire [6:0]addr1;
-    wire [3:0]endp1;
-    wire err1;
-  wire [63:0] data1 ;
-  wire data_error; 
+wire [6:0]addr1;
+wire [3:0]endp1;
+wire err1;
+wire [63:0] data1 ;
+wire data_error; 
+reg extra_data_setup;
 
+
+reg temp123;
 //estos son los estados y los valores valios de token no se trabajo con l
 //los esperciales 
 
 parameter [3:0]
-	IDLE = 4'b0001,
-	RECEIVE = 4'b0010,
-	STATE = 4'b0011,
-	TOKEN = 4'b0100,
-	DATA = 4'b0101,
-	HANDSHAKE = 4'b0110,
-	SETUP_TOKEN = 4'b0111,
-	OUT_TOKEN = 4'b1000, 
-	IN_TOKEN = 4'b1001,
-	ACK_TOKEN = 4'b1010, 
+	IDLE = 5'b00001,
+	RECEIVE = 5'b00010,
+	STATE = 5'b00011,
+	TOKEN = 5'b00100,
+	DATA = 5'b00101,
+	ACK_TOKEN = 5'b00110,
+	SETUP_TOKEN = 5'b00111,
+	OUT_TOKEN = 5'b01000, 
+	IN_TOKEN = 5'b01001,
+	 
+	DATA_IN = 5'b01011, 
+	DATA_OUT = 5'b01100, 
+	STALL = 5'b01101, 
+	NACK_TOKEN =  5'b01111,  
+
 	Token_OUT = 4'b0001,
     Token_IN = 4'b1001,
     Token_SOF = 4'b0101,
@@ -100,19 +119,37 @@ always @(posedge clk)
 begin 
 startControl = 1'b0 ;
 next_state = state;
-ack_out = 7'b0 ;
+token_out = 7'b0 ;
 Myaddr = 7'b1111111;
-	
+ halted_enpoints_in = 0 ;
+ halted_enpoints_out = 0;
+ funcion_enpoints_in =0;
+funcion_enpoints_out = 0;	
+addr[6:0] = addr1;
 	case (state)
 		IDLE : 
 			begin
-			if (firtsPachet== 0 ) next_state =  IDLE;
-			else next_state = RECEIVE;
+				
+					if (sync == 8'b01010100) 
+					begin
+						speed = 01 ;
+						next_state = RECEIVE;
+					end 
+					if (sync2 == 1) 
+					begin
+						speed = 10 ;
+						next_state = RECEIVE;
+					end 
+					if (sync2 != 1 && sync != 8'b01010100 ) 
+					begin
+						speed = 10 ;
+						next_state = RECEIVE;
+					end 
+
+				
 			end 
 		RECEIVE :
 			begin
-			
-		
 			 if (token[23] == ~token[19] && token[22] == ~token[18] && token[21] == ~token[17] && token[20] == ~token[16])
 			 begin
 			    next_state = STATE;
@@ -124,8 +161,17 @@ Myaddr = 7'b1111111;
 			begin	
 				if (token[23:20] == Token_OUT)
 				begin 
-					if (addr[6:0] == Myaddr[6:0])
+						if (addr[6:0] == Myaddr[6:0])
 					begin
+
+						if (halted_enpoints_out [endp1 ] == 1) next_state = STALL;
+					
+						else
+						begin
+						last_token[3:0] = token[23:20] ;
+						 next_state =  IDLE;
+						 end 
+
 					end
 					else next_state =  IDLE;  
 				end 
@@ -133,6 +179,13 @@ Myaddr = 7'b1111111;
 				begin 
 					if (addr[6:0] == Myaddr[6:0])
 						begin
+						if (halted_enpoints_in [endp1 ] == 1) next_state = STALL;
+
+						else
+						begin
+						last_token = token[23:20] ;
+						 next_state =  IDLE;
+						 end 
 						end
 					else next_state =  IDLE; 
 				end 
@@ -144,8 +197,14 @@ Myaddr = 7'b1111111;
 				end 
 				if (token[23:20] == Data_DATA0 )
 				begin 
+				
 					if (addr[6:0] == Myaddr[6:0])
 						begin
+							dato_par = 1 ;
+							  if (last_token [3:0] == Token_SETUP) next_state =  DATA_IN;
+							  if (last_token [3:0] == Token_IN) next_state =  DATA_IN;   
+							  if (last_token [3:0] == Token_OUT) next_state =  DATA_OUT; 
+							 if (last_token [3:0] != Token_SETUP && last_token [3:0] != Token_SETUP && last_token [3:0] != Token_OUT)  next_state =  IDLE;  
 						end
 						else next_state =  IDLE;  
 				end 
@@ -153,8 +212,9 @@ Myaddr = 7'b1111111;
 				begin 
 					if (addr[6:0] == Myaddr[6:0])
 						begin
-
-						//this is not used by debug class in control 
+						dato_par = 0 ; 
+						 if (last_token [3:0] == Token_IN) next_state =  DATA_IN; 
+						  if (last_token [3:0] == Token_OUT) next_state =  DATA_OUT;
 						end
 						else next_state =  IDLE;  
 				end 
@@ -184,24 +244,95 @@ Myaddr = 7'b1111111;
 			end 
 		SETUP_TOKEN: 	
 			begin 
-			if (data_error == 1'b1)
+				last_token = token[23:20] ;
+
+				if (endp1==0) 
 				begin
-				next_state =  IDLE; 
-				end
-				
-				else 
-				begin
-				startControl = 1'b1;
-				//aqui necesito un wait del peor casi que dure control
-				next_state =  HANDSHAKE; 
+					/*if (data_error == 1'b1)
+						begin
+						//este dato 
+						next_state =  NACK_TOKEN; 
+						end
+						
+						else */
+						begin
+						
+						next_state =  IDLE; 
+						end 
 				end 
+			end
+		NACK_TOKEN:
+			begin
+			token_out = Handshake_NAK;
+			next_state =  IDLE;  
 			end 
-		HANDSHAKE: 	
+		
+
+		ACK_TOKEN: 	
 			begin 
-			ack_out = Handshake_ACK; 
-			next_state =  IDLE; 
+			token_out = Handshake_ACK; 
+			
+				next_state =  IDLE; 
+			  
 			end 			
-		endcase	
+		STALL:		
+			begin 
+				token_out = Handshake_STALL; 
+			
+			end  
+
+		DATA_IN:
+			begin 
+				if (last_token == Token_SETUP)
+				begin
+				dato_atual = setup_data[80:16];
+				next_state =  ACK_TOKEN; 
+
+				end
+				else
+				begin
+					 dato_atual= data1 ;
+					if (data_error == 1'b1)
+					begin
+					//este dato 
+					next_state =  NACK_TOKEN; 
+					end
+					if (busy == 1'b1)
+					begin
+					//este dato 
+					next_state =  STALL; 
+					end
+				end 
+
+				if (busy != 1'b1 && data_error != 1'b1) 
+				begin
+				
+				next_state =  ACK_TOKEN; 
+				end 
+			end
+		DATA_OUT:
+			begin 
+				next_state =  IDLE; 
+
+				if (data_error == 1'b1)
+				begin
+				//este dato 
+				next_state =  NACK_TOKEN; 
+				end
+				if (busy == 1'b1)
+				begin
+				//este dato 
+				next_state =  STALL; 
+				end
+
+
+				if (busy != 1'b1 && data_error != 1'b1) 
+				begin
+				
+				next_state =  ACK_TOKEN; 
+				end 
+			end
 		/**/
+	endcase
 end 
 endmodule

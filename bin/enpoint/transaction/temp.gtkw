@@ -1,0 +1,51 @@
+[*]
+[*] GTKWave Analyzer v3.3.66 (w)1999-2015 BSI
+[*] Tue Jan 23 08:03:26 2018
+[*]
+[dumpfile] "/home/yoe/PROYECTO/bin/enpoint/transaction/tester.vcd"
+[dumpfile_mtime] "Tue Jan 23 08:03:05 2018"
+[dumpfile_size] 13525
+[savefile] "/home/yoe/PROYECTO/bin/enpoint/transaction/temp.gtkw"
+[timestart] 0
+[size] 1364 714
+[pos] 0 0
+*-4.000000 14 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tester.
+[treeopen] tester.TS_instance.
+[treeopen] tester.TS_instance.Data_set_up_pack_intance.
+[treeopen] tester.TS_instance.token_in_intance.
+[sst_width] 225
+[signals_width] 166
+[sst_expanded] 1
+[sst_vpaned_height] 194
+@28
+tester.rclk
+@22
+tester.rdata[1047:0]
+@28
+tester.rrst
+@22
+tester.rsetup_data[88:0]
+tester.rtoken[23:0]
+tester.wdata_out[1047:0]
+tester.wtoken_out[7:0]
+tester.TS_instance.state[4:0]
+tester.TS_instance.next_state[4:0]
+tester.CRC5_D11_intance2.nextCRC5_D11[4:0]
+tester.TS_instance.token_in_intance.CRC5_D11_intance.nextCRC5_D11[4:0]
+tester.CRC5_D11_intance2.crc[4:0]
+tester.TS_instance.token_in_intance.CRC5_D11_intance.crc[4:0]
+tester.TS_instance.token_in_intance.CRC5_D11_intance.newcrc[4:0]
+tester.TS_instance.token_in_intance.CRC5_D11_intance.Data[10:0]
+tester.CRC5_D11_intance2.Data[10:0]
+@28
+tester.TS_instance.token_in_intance.error
+tester.TS_instance.last_token[3:0]
+@22
+tester.TS_instance.token[23:0]
+@28
+tester.TS_instance.pid1[7:0]
+@29
+tester.TS_instance.temp123
+[pattern_trace] 1
+[pattern_trace] 0

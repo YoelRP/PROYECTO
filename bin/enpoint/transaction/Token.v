@@ -5,6 +5,8 @@ module token_in(
     pid,
     addr,
     endp,
+    in,
+
     err
 	);
  	input wire [23:0]data;
@@ -18,7 +20,12 @@ module token_in(
     reg [4:0]crc2;
     reg [4:0]crc1;
     reg [4:0]i;
-    reg [4:0] crcBASE = 15'b0;
+   
+
+    reg [4:0] crcBASE = 0 ;
+
+     //   assign crcBASE = data [4:0];
+
 
 CRC5_D11 CRC5_D11_intance (
  .Data (data[15:5]),

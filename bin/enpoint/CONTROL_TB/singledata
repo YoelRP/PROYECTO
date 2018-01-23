@@ -37,25 +37,60 @@ always @(rclk)
        rrst =0 ;
 	 rdata = 0;
   	 rparameter_Block = 1;
-     rparameter_Block2 = 12;
-	  rbmRequestType [7:0] = 8'b00100001;
-	  rbRequest  = 8'h03 ;
-	  rwValue = 0;
-	  rwIndex = 0;
-	  rwLength = 2;
-	 renable = 1 ;
-       #5 
-       rrst =0 ;
-	 rdata = 0;
-  	 rparameter_Block = 1;
      rparameter_Block2 = 0;
-	  rbmRequestType [7:0] = 8'b10100001;
-	  rbRequest  = 8'h83 ;
+	  rbmRequestType [7:0] = 8'b00100001;
+	  rbRequest  = 8'h02 ;
 	  rwValue = 0;
 	  rwIndex = 0;
-	  rwLength = 2;
-	 renable = 1 ;
+	  rwLength = 0;
+	 renable = 0 ;
+	 #5 
+	rrst =0 ;
+	rdata = 0;
+  	rparameter_Block = 32'b1110101;
+    rparameter_Block2 = 0;
+	rbmRequestType [7:0] = 8'b00100001;
+	rbRequest  = 8'h02 ;
+	rwValue = 0;
+	rwIndex = 0;
+	rwLength = 0;
+	renable =1 ;
+	 #10
+	rrst =0 ;
+	rdata = 0;
+  	rparameter_Block = 32'b1101100101;
+    rparameter_Block2 = 0;
+	rbmRequestType [7:0] = 8'b00100001;
+	rbRequest  = 8'h02 ;
+	rwValue = 0;
+	rwIndex = 0;
+	rwLength = 0;
+	renable = 1 ;
+	 #10 
+	rrst =0 ;
+	rdata = 0;
+  	rparameter_Block = 32'b111101;
+    rparameter_Block2 = 0;
+	rbmRequestType [7:0] = 8'b00100001;
+	rbRequest  = 8'h02 ;
+	rwValue = 0;
+	rwIndex = 0;
+	rwLength = 0;
+	renable = 1 ;
+	 #5 
+	rrst =0 ;
+	rdata = 0;
+  	rparameter_Block = 32'b111101;
+    rparameter_Block2 = 0;
+	rbmRequestType [7:0] = 8'b00100001;
+	rbRequest  = 8'h02 ;
+	rwValue = 0;
+	rwIndex = 0;
+	rwLength = 0;
+	renable = 1 ;
 	
+
+
 
 	  # 513 $finish;
   end
@@ -70,6 +105,7 @@ control control_intance (
 .parameter_Block 	(rparameter_Block),
 .parameter_Block2 	(rparameter_Block2),
 .enable              (renable)
+
 );
 
 

@@ -37,7 +37,7 @@ always @(rclk)
        rrst =0 ;
 	 rdata = 0;
   	 rparameter_Block = 1;
-     rparameter_Block2 = 12;
+     rparameter_Block2 = 0;
 	  rbmRequestType [7:0] = 8'b00100001;
 	  rbRequest  = 8'h03 ;
 	  rwValue = 0;
@@ -49,13 +49,23 @@ always @(rclk)
 	 rdata = 0;
   	 rparameter_Block = 1;
      rparameter_Block2 = 0;
-	  rbmRequestType [7:0] = 8'b10100001;
-	  rbRequest  = 8'h83 ;
+	  rbmRequestType [7:0] = 8'b00100001;
+	  rbRequest  = 8'h01 ;
 	  rwValue = 0;
 	  rwIndex = 0;
 	  rwLength = 2;
 	 renable = 1 ;
-	
+	 #5 
+	rrst =0 ;
+	rdata = 0;
+  	rparameter_Block = 32'b1101;
+    rparameter_Block2 = 0;
+	rbmRequestType [7:0] = 8'b00100001;
+	rbRequest  = 8'h01 ;
+	rwValue = 0;
+	rwIndex = 0;
+	rwLength = 2;
+	renable = 1 ;
 
 	  # 513 $finish;
   end

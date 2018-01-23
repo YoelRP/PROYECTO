@@ -4,1331 +4,2059 @@
 :vpi_module "system";
 :vpi_module "v2005_math";
 :vpi_module "va_math";
-S_0x24206c0 .scope module, "control" "control" 2 1;
+S_0x1caa930 .scope module, "tester" "tester" 2 1;
  .timescale 0 0;
-P_0x24951c8 .param/l "DATA" 2 45, C4<00101>;
-P_0x24951f0 .param/l "GET" 2 44, C4<00100>;
-P_0x2495218 .param/l "GET_ALT_STACK" 2 55, C4<01111>;
-P_0x2495240 .param/l "GET_CONFIG_ADDRESS" 2 54, C4<01110>;
-P_0x2495268 .param/l "GET_CONFIG_DATA" 2 52, C4<01100>;
-P_0x2495290 .param/l "GET_CONFIG_SINGLE" 2 53, C4<01101>;
-P_0x24952b8 .param/l "GET_INFO" 2 58, C4<10010>;
-P_0x24952e0 .param/l "GET_OPERATION_MODE" 2 56, C4<10000>;
-P_0x2495308 .param/l "GET_TRACE" 2 57, C4<10001>;
-P_0x2495330 .param/l "IDLE" 2 41, C4<00001>;
-P_0x2495358 .param/l "RECEIVE" 2 42, C4<00010>;
-P_0x2495380 .param/l "SET" 2 43, C4<00011>;
-P_0x24953a8 .param/l "SET_ALT_STACK" 2 47, C4<00111>;
-P_0x24953d0 .param/l "SET_BUFFER" 2 50, C4<01010>;
-P_0x24953f8 .param/l "SET_CONFIG_ADDRESS" 2 60, C4<10100>;
-P_0x2495420 .param/l "SET_CONFIG_DATA" 2 59, C4<10011>;
-P_0x2495448 .param/l "SET_CONFIG_DATA_SINGLE" 2 46, C4<00110>;
-P_0x2495470 .param/l "SET_OPERATING_MODE" 2 48, C4<01000>;
-P_0x2495498 .param/l "SET_RESET" 2 51, C4<01011>;
-P_0x24954c0 .param/l "SET_TRACE" 2 49, C4<01001>;
-v0x2458850_0 .var "address", 63 0;
-v0x24b4a30_0 .var "addresstemp1", 31 0;
-v0x24b4ad0_0 .var "addresstemp2", 31 0;
-v0x24b4b70_0 .var "bRequest", 7 0;
-v0x24b4c20_0 .var "bmRequestType", 7 0;
-v0x24b4cc0_0 .net "clk", 0 0, C4<z>; 0 drivers
-v0x24b4da0_0 .var "config_data", 31 0;
-v0x24b4e40_0 .var "count", 15 0;
-v0x24b4f30_0 .net "data", 63 0, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; 0 drivers
-v0x24b4fd0_0 .var "data_out", 31 0;
-v0x24b50d0_0 .var "data_out2", 63 0;
-v0x24b5170_0 .var "dato", 31 0;
-v0x24b5280_0 .var "debug_Unit_ID", 7 0;
-v0x24b5320_0 .var "global", 0 0;
-v0x24b5440_0 .var "interface_ID", 7 0;
-v0x24b54e0_0 .var "local", 0 0;
-v0x24b53a0_0 .var "next_state", 4 0;
-v0x24b5630_0 .net "parameter_Block", 31 0, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; 0 drivers
-v0x24b5750_0 .net "parameter_Block2", 63 0, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; 0 drivers
-v0x24b57d0_0 .var "readWrite", 31 0;
-v0x24b56b0_0 .net "rst", 0 0, C4<z>; 0 drivers
-v0x24b5900_0 .var "singl_data", 0 0;
-v0x24b5850_0 .var "specific", 0 0;
-v0x24b5a40_0 .net "start", 0 0, C4<z>; 0 drivers
-v0x24b59a0_0 .var "state", 4 0;
-v0x24b5b90_0 .var "tempoadress", 63 0;
-v0x24b5ae0_0 .var "wIndex", 15 0;
-v0x24b5cf0_0 .var "wLength", 15 0;
-v0x24b5c30_0 .var "wValue", 15 0;
-E_0x2420690 .event posedge, v0x24b4cc0_0;
-    .scope S_0x24206c0;
+v0x1cef090_0 .var "rbRequest", 7 0;
+v0x1cef360_0 .var "rbmRequestType", 7 0;
+v0x1cef3e0_0 .var "rclk", 0 0;
+v0x1cef460_0 .var "rdata", 63 0;
+v0x1cef4e0_0 .var "renable", 0 0;
+v0x1cef560_0 .var "rparameter_Block", 31 0;
+v0x1cef5e0_0 .var "rparameter_Block2", 63 0;
+v0x1cef660_0 .var "rrst", 0 0;
+v0x1cef710_0 .var "rwIndex", 15 0;
+v0x1cef790_0 .var "rwLength", 15 0;
+v0x1cef810_0 .var "rwValue", 15 0;
+v0x1cef890_0 .net "wbusy", 0 0, v0x1cedc40_0; 1 drivers
+v0x1cef940_0 .net "wdata_out", 31 0, v0x1cee120_0; 1 drivers
+v0x1cef9f0_0 .net "wdata_out2", 63 0, v0x1cee1c0_0; 1 drivers
+v0x1cefb20_0 .net "wdata_out3", 15 0, v0x1cee2e0_0; 1 drivers
+E_0x1ccd910 .event edge, v0x1cedce0_0;
+S_0x1caaa20 .scope module, "control_intance" "control" 2 62, 3 1, S_0x1caa930;
+ .timescale 0 0;
+P_0x1cce808 .param/l "GET_ALT_STACK" 3 65, C4<01111>;
+P_0x1cce830 .param/l "GET_BUFFER" 3 73, C4<10110>;
+P_0x1cce858 .param/l "GET_CONFIG_ADDRESS" 3 64, C4<01110>;
+P_0x1cce880 .param/l "GET_CONFIG_DATA" 3 62, C4<01100>;
+P_0x1cce8a8 .param/l "GET_CONFIG_SINGLE" 3 63, C4<01101>;
+P_0x1cce8d0 .param/l "GET_ERROR" 3 72, C4<10101>;
+P_0x1cce8f8 .param/l "GET_INFO" 3 69, C4<10010>;
+P_0x1cce920 .param/l "GET_OPERATION_MODE" 3 66, C4<10000>;
+P_0x1cce948 .param/l "GET_TRACE" 3 67, C4<10001>;
+P_0x1cce970 .param/l "IDLE" 3 54, C4<00001>;
+P_0x1cce998 .param/l "RECEIVE" 3 55, C4<00010>;
+P_0x1cce9c0 .param/l "SET_ALT_STACK" 3 57, C4<00111>;
+P_0x1cce9e8 .param/l "SET_BUFFER" 3 60, C4<01010>;
+P_0x1ccea10 .param/l "SET_CONFIG_ADDRESS" 3 71, C4<10100>;
+P_0x1ccea38 .param/l "SET_CONFIG_DATA" 3 70, C4<10011>;
+P_0x1ccea60 .param/l "SET_CONFIG_DATA_SINGLE" 3 56, C4<00110>;
+P_0x1ccea88 .param/l "SET_OPERATING_MODE" 3 58, C4<01000>;
+P_0x1cceab0 .param/l "SET_RESET" 3 61, C4<01011>;
+P_0x1ccead8 .param/l "SET_TRACE" 3 59, C4<01001>;
+v0x1c64bf0_0 .var "address", 63 0;
+v0x1ced8d0_0 .var "addresstemp1", 31 0;
+v0x1ced970_0 .var "addresstemp2", 31 0;
+v0x1ceda10_0 .var "bRequest", 7 0;
+v0x1cedac0_0 .var "bmRequestType", 7 0;
+v0x1cedb60_0 .var "buffer_command", 63 0;
+v0x1cedc40_0 .var "busy", 0 0;
+v0x1cedce0_0 .net "clk", 0 0, v0x1cef3e0_0; 1 drivers
+v0x1ceddd0_0 .var "config_data", 31 0;
+v0x1cede70_0 .var "config_trace", 31 0;
+v0x1cedf70_0 .var "count", 15 0;
+v0x1cee010_0 .net "data", 63 0, v0x1cef460_0; 1 drivers
+v0x1cee120_0 .var "data_out", 31 0;
+v0x1cee1c0_0 .var "data_out2", 63 0;
+v0x1cee2e0_0 .var "data_out3", 15 0;
+v0x1cee380_0 .var "dato", 31 0;
+v0x1cee240_0 .var "datotemp1", 31 0;
+v0x1cee4d0_0 .var "datotemp2", 31 0;
+v0x1cee5f0_0 .var "debug_Unit_ID", 7 0;
+v0x1cee670_0 .net "enable", 0 0, v0x1cef4e0_0; 1 drivers
+v0x1cee550_0 .var "global", 0 0;
+v0x1cee7a0_0 .var "interface_ID", 7 0;
+v0x1cee6f0_0 .var "local", 0 0;
+v0x1cee8e0_0 .var "next_state", 4 0;
+v0x1cee840_0 .net "parameter_Block", 31 0, v0x1cef560_0; 1 drivers
+v0x1ceea30_0 .net "parameter_Block2", 63 0, v0x1cef5e0_0; 1 drivers
+v0x1cee980_0 .var "readWrite", 31 0;
+v0x1ceeb90_0 .var "reset_endpoint", 0 0;
+v0x1ceead0_0 .net "rst", 0 0, v0x1cef660_0; 1 drivers
+v0x1ceed00_0 .var "singl_data", 0 0;
+v0x1ceec10_0 .var "specific", 0 0;
+v0x1ceee80_0 .var "state", 4 0;
+v0x1ceed80_0 .var "tempoadress", 63 0;
+v0x1cef010_0 .var "wIndex", 15 0;
+v0x1ceef00_0 .var "wLength", 15 0;
+v0x1cef1b0_0 .var "wValue", 15 0;
+E_0x1c61280 .event posedge, v0x1cedce0_0;
+    .scope S_0x1caaa20;
 T_0 ;
-    %wait E_0x2420690;
-    %load/v 8, v0x24b56b0_0, 1;
-    %jmp/0xz  T_0.0, 8;
+    %wait E_0x1c61280;
+    %load/v 8, v0x1cee670_0, 1;
+    %mov 9, 0, 2;
+    %cmpi/u 8, 1, 3;
+    %inv 4, 1;
+    %jmp/0xz  T_0.0, 4;
     %delay 1, 0;
-    %movi 8, 1, 5;
-    %set/v v0x24b59a0_0, 8, 5;
+    %load/v 8, v0x1ceee80_0, 5;
+    %set/v v0x1ceee80_0, 8, 5;
     %jmp T_0.1;
 T_0.0 ;
+    %load/v 8, v0x1ceead0_0, 1;
+    %jmp/0xz  T_0.2, 8;
     %delay 1, 0;
-    %load/v 8, v0x24b53a0_0, 5;
-    %set/v v0x24b59a0_0, 8, 5;
+    %movi 8, 1, 5;
+    %set/v v0x1ceee80_0, 8, 5;
+    %jmp T_0.3;
+T_0.2 ;
+    %delay 1, 0;
+    %load/v 8, v0x1cee8e0_0, 5;
+    %set/v v0x1ceee80_0, 8, 5;
+T_0.3 ;
 T_0.1 ;
     %jmp T_0;
     .thread T_0;
-    .scope S_0x24206c0;
+    .scope S_0x1caaa20;
 T_1 ;
-    %wait E_0x2420690;
+    %wait E_0x1c61280;
     %movi 8, 8607, 32;
-    %set/v v0x24b4da0_0, 8, 32;
-    %load/v 8, v0x24b59a0_0, 5;
+    %set/v v0x1ceddd0_0, 8, 32;
+    %load/v 8, v0x1ceee80_0, 5;
     %cmpi/u 8, 1, 5;
     %jmp/1 T_1.0, 6;
     %cmpi/u 8, 2, 5;
     %jmp/1 T_1.1, 6;
-    %cmpi/u 8, 3, 5;
-    %jmp/1 T_1.2, 6;
-    %cmpi/u 8, 4, 5;
-    %jmp/1 T_1.3, 6;
     %cmpi/u 8, 6, 5;
-    %jmp/1 T_1.4, 6;
+    %jmp/1 T_1.2, 6;
     %cmpi/u 8, 19, 5;
-    %jmp/1 T_1.5, 6;
+    %jmp/1 T_1.3, 6;
     %cmpi/u 8, 20, 5;
-    %jmp/1 T_1.6, 6;
+    %jmp/1 T_1.4, 6;
     %cmpi/u 8, 7, 5;
-    %jmp/1 T_1.7, 6;
+    %jmp/1 T_1.5, 6;
     %cmpi/u 8, 8, 5;
-    %jmp/1 T_1.8, 6;
+    %jmp/1 T_1.6, 6;
     %cmpi/u 8, 9, 5;
-    %jmp/1 T_1.9, 6;
+    %jmp/1 T_1.7, 6;
     %cmpi/u 8, 10, 5;
-    %jmp/1 T_1.10, 6;
+    %jmp/1 T_1.8, 6;
+    %cmpi/u 8, 22, 5;
+    %jmp/1 T_1.9, 6;
     %cmpi/u 8, 11, 5;
-    %jmp/1 T_1.11, 6;
+    %jmp/1 T_1.10, 6;
     %cmpi/u 8, 12, 5;
-    %jmp/1 T_1.12, 6;
+    %jmp/1 T_1.11, 6;
     %cmpi/u 8, 14, 5;
-    %jmp/1 T_1.13, 6;
+    %jmp/1 T_1.12, 6;
     %cmpi/u 8, 15, 5;
-    %jmp/1 T_1.14, 6;
+    %jmp/1 T_1.13, 6;
     %cmpi/u 8, 16, 5;
-    %jmp/1 T_1.15, 6;
+    %jmp/1 T_1.14, 6;
     %cmpi/u 8, 17, 5;
-    %jmp/1 T_1.16, 6;
+    %jmp/1 T_1.15, 6;
     %cmpi/u 8, 18, 5;
-    %jmp/1 T_1.17, 6;
-    %jmp T_1.18;
+    %jmp/1 T_1.16, 6;
+    %jmp T_1.17;
 T_1.0 ;
-    %load/v 8, v0x24b5a40_0, 1;
-    %mov 9, 0, 1;
-    %cmpi/u 8, 0, 2;
-    %jmp/0xz  T_1.19, 4;
-    %movi 8, 1, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-    %jmp T_1.20;
-T_1.19 ;
-    %movi 8, 2, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-    %ix/load 1, 55, 0;
+    %ix/load 1, 56, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.21, 4;
-    %load/x1p 8, v0x24b4f30_0, 9;
-    %jmp T_1.22;
-T_1.21 ;
-    %mov 8, 2, 9;
-T_1.22 ;
-; Save base=8 wid=9 in lookaside.
-    %set/v v0x24b4c20_0, 8, 8;
+    %jmp/1 T_1.18, 4;
+    %load/x1p 8, v0x1cee010_0, 8;
+    %jmp T_1.19;
+T_1.18 ;
+    %mov 8, 2, 8;
+T_1.19 ;
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cedac0_0, 8, 8;
     %ix/load 1, 47, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.23, 4;
-    %load/x1p 8, v0x24b4f30_0, 9;
-    %jmp T_1.24;
-T_1.23 ;
-    %mov 8, 2, 9;
-T_1.24 ;
-; Save base=8 wid=9 in lookaside.
-    %set/v v0x24b4b70_0, 8, 8;
+    %jmp/1 T_1.20, 4;
+    %load/x1p 8, v0x1cee010_0, 10;
+    %jmp T_1.21;
+T_1.20 ;
+    %mov 8, 2, 10;
+T_1.21 ;
+; Save base=8 wid=10 in lookaside.
+    %set/v v0x1ceda10_0, 8, 8;
     %ix/load 1, 33, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.25, 4;
-    %load/x1p 8, v0x24b4f30_0, 16;
-    %jmp T_1.26;
-T_1.25 ;
-    %mov 8, 2, 16;
-T_1.26 ;
-; Save base=8 wid=16 in lookaside.
-    %set/v v0x24b5c30_0, 8, 16;
+    %jmp/1 T_1.22, 4;
+    %load/x1p 24, v0x1cee010_0, 14;
+    %jmp T_1.23;
+T_1.22 ;
+    %mov 24, 2, 14;
+T_1.23 ;
+    %mov 8, 24, 14; Move signal select into place
+    %mov 22, 0, 2;
+    %set/v v0x1cef1b0_0, 8, 16;
     %ix/load 1, 16, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.27, 4;
-    %load/x1p 8, v0x24b4f30_0, 17;
-    %jmp T_1.28;
-T_1.27 ;
+    %jmp/1 T_1.24, 4;
+    %load/x1p 8, v0x1cee010_0, 17;
+    %jmp T_1.25;
+T_1.24 ;
     %mov 8, 2, 17;
-T_1.28 ;
+T_1.25 ;
 ; Save base=8 wid=17 in lookaside.
-    %set/v v0x24b5ae0_0, 8, 16;
-    %load/v 8, v0x24b4f30_0, 16; Only need 16 of 64 bits
+    %set/v v0x1cef010_0, 8, 16;
+    %load/v 8, v0x1cee010_0, 16; Only need 16 of 64 bits
 ; Save base=8 wid=16 in lookaside.
-    %set/v v0x24b5cf0_0, 8, 16;
-    %set/v v0x24b5900_0, 0, 1;
-T_1.20 ;
-    %jmp T_1.18;
+    %set/v v0x1ceef00_0, 8, 16;
+    %set/v v0x1ceed00_0, 0, 1;
+    %set/v v0x1cedc40_0, 0, 1;
+    %movi 8, 2, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %set/v v0x1ceeb90_0, 0, 1;
+    %jmp T_1.17;
 T_1.1 ;
-    %load/v 8, v0x24b4c20_0, 8;
-    %cmpi/u 8, 33, 8;
-    %jmp/0xz  T_1.29, 4;
-    %movi 8, 3, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.29 ;
-    %load/v 8, v0x24b4c20_0, 8;
-    %cmpi/u 8, 33, 8;
-    %jmp/0xz  T_1.31, 4;
-    %movi 8, 4, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.31 ;
-    %jmp T_1.18;
-T_1.2 ;
-    %load/v 8, v0x24b4b70_0, 8;
+    %load/v 8, v0x1ceda10_0, 8;
     %cmpi/u 8, 1, 8;
-    %jmp/0xz  T_1.33, 4;
+    %mov 8, 4, 1;
+    %load/v 9, v0x1cedac0_0, 8;
+    %cmpi/u 9, 33, 8;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.26, 8;
     %movi 8, 19, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.33 ;
-    %load/v 8, v0x24b4b70_0, 8;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.26 ;
+    %load/v 8, v0x1ceda10_0, 8;
     %cmpi/u 8, 2, 8;
-    %jmp/0xz  T_1.35, 4;
+    %mov 8, 4, 1;
+    %load/v 9, v0x1cedac0_0, 8;
+    %cmpi/u 9, 33, 8;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.28, 8;
     %movi 8, 6, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.35 ;
-    %load/v 8, v0x24b4b70_0, 8;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.28 ;
+    %load/v 8, v0x1ceda10_0, 8;
     %cmpi/u 8, 3, 8;
-    %jmp/0xz  T_1.37, 4;
+    %mov 8, 4, 1;
+    %load/v 9, v0x1cedac0_0, 8;
+    %cmpi/u 9, 33, 8;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.30, 8;
     %movi 8, 20, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.37 ;
-    %load/v 8, v0x24b4b70_0, 8;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.30 ;
+    %load/v 8, v0x1ceda10_0, 8;
     %cmpi/u 8, 4, 8;
-    %jmp/0xz  T_1.39, 4;
+    %mov 8, 4, 1;
+    %load/v 9, v0x1cedac0_0, 8;
+    %cmpi/u 9, 33, 8;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.32, 8;
     %movi 8, 7, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.39 ;
-    %load/v 8, v0x24b4b70_0, 8;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.32 ;
+    %load/v 8, v0x1ceda10_0, 8;
     %cmpi/u 8, 5, 8;
-    %jmp/0xz  T_1.41, 4;
+    %mov 8, 4, 1;
+    %load/v 9, v0x1cedac0_0, 8;
+    %cmpi/u 9, 33, 8;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.34, 8;
     %movi 8, 8, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.41 ;
-    %load/v 8, v0x24b4b70_0, 8;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.34 ;
+    %load/v 8, v0x1ceda10_0, 8;
     %cmpi/u 8, 6, 8;
-    %jmp/0xz  T_1.43, 4;
+    %mov 8, 4, 1;
+    %load/v 9, v0x1cedac0_0, 8;
+    %cmpi/u 9, 33, 8;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.36, 8;
     %movi 8, 9, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.43 ;
-    %load/v 8, v0x24b4b70_0, 8;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.36 ;
+    %load/v 8, v0x1ceda10_0, 8;
     %cmpi/u 8, 9, 8;
-    %jmp/0xz  T_1.45, 4;
+    %mov 8, 4, 1;
+    %load/v 9, v0x1cedac0_0, 8;
+    %cmpi/u 9, 33, 8;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.38, 8;
     %movi 8, 10, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.45 ;
-    %load/v 8, v0x24b4b70_0, 8;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.38 ;
+    %load/v 8, v0x1ceda10_0, 8;
     %cmpi/u 8, 10, 8;
-    %jmp/0xz  T_1.47, 4;
+    %mov 8, 4, 1;
+    %load/v 9, v0x1cedac0_0, 8;
+    %cmpi/u 9, 33, 8;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.40, 8;
     %movi 8, 11, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.47 ;
-    %jmp T_1.18;
-T_1.3 ;
-    %load/v 8, v0x24b4b70_0, 8;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.40 ;
+    %load/v 8, v0x1ceda10_0, 8;
     %cmpi/u 8, 129, 8;
-    %jmp/0xz  T_1.49, 4;
+    %mov 8, 4, 1;
+    %load/v 9, v0x1cedac0_0, 8;
+    %cmpi/u 9, 161, 8;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.42, 8;
     %movi 8, 12, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.49 ;
-    %load/v 8, v0x24b4b70_0, 8;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.42 ;
+    %load/v 8, v0x1ceda10_0, 8;
     %cmpi/u 8, 130, 8;
-    %jmp/0xz  T_1.51, 4;
+    %mov 8, 4, 1;
+    %load/v 9, v0x1cedac0_0, 8;
+    %cmpi/u 9, 161, 8;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.44, 8;
     %movi 8, 13, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.51 ;
-    %load/v 8, v0x24b4b70_0, 8;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.44 ;
+    %load/v 8, v0x1ceda10_0, 8;
     %cmpi/u 8, 131, 8;
-    %jmp/0xz  T_1.53, 4;
+    %mov 8, 4, 1;
+    %load/v 9, v0x1cedac0_0, 8;
+    %cmpi/u 9, 161, 8;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.46, 8;
     %movi 8, 14, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.53 ;
-    %load/v 8, v0x24b4b70_0, 8;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.46 ;
+    %load/v 8, v0x1ceda10_0, 8;
     %cmpi/u 8, 132, 8;
-    %jmp/0xz  T_1.55, 4;
+    %mov 8, 4, 1;
+    %load/v 9, v0x1cedac0_0, 8;
+    %cmpi/u 9, 161, 8;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.48, 8;
     %movi 8, 15, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.55 ;
-    %load/v 8, v0x24b4b70_0, 8;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.48 ;
+    %load/v 8, v0x1ceda10_0, 8;
     %cmpi/u 8, 133, 8;
-    %jmp/0xz  T_1.57, 4;
+    %mov 8, 4, 1;
+    %load/v 9, v0x1cedac0_0, 8;
+    %cmpi/u 9, 161, 8;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.50, 8;
     %movi 8, 16, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.57 ;
-    %load/v 8, v0x24b4b70_0, 8;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.50 ;
+    %load/v 8, v0x1ceda10_0, 8;
     %cmpi/u 8, 134, 8;
-    %jmp/0xz  T_1.59, 4;
+    %mov 8, 4, 1;
+    %load/v 9, v0x1cedac0_0, 8;
+    %cmpi/u 9, 161, 8;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.52, 8;
     %movi 8, 17, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.59 ;
-    %load/v 8, v0x24b4b70_0, 8;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.52 ;
+    %load/v 8, v0x1ceda10_0, 8;
     %cmpi/u 8, 135, 8;
-    %jmp/0xz  T_1.61, 4;
+    %mov 8, 4, 1;
+    %load/v 9, v0x1cedac0_0, 8;
+    %cmpi/u 9, 161, 8;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.54, 8;
     %movi 8, 18, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.61 ;
-    %load/v 8, v0x24b4b70_0, 8;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.54 ;
+    %load/v 8, v0x1ceda10_0, 8;
     %cmpi/u 8, 136, 8;
-    %jmp/0xz  T_1.63, 4;
-T_1.63 ;
-    %load/v 8, v0x24b4b70_0, 8;
+    %mov 8, 4, 1;
+    %load/v 9, v0x1cedac0_0, 8;
+    %cmpi/u 9, 161, 8;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.56, 8;
+    %movi 8, 21, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.56 ;
+    %load/v 8, v0x1ceda10_0, 8;
     %cmpi/u 8, 137, 8;
-    %jmp/0xz  T_1.65, 4;
-T_1.65 ;
-    %jmp T_1.18;
-T_1.4 ;
+    %mov 8, 4, 1;
+    %load/v 9, v0x1cedac0_0, 8;
+    %cmpi/u 9, 161, 8;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_1.58, 8;
+    %movi 8, 22, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.58 ;
+    %jmp T_1.17;
+T_1.2 ;
+    %set/v v0x1cedc40_0, 1, 1;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.67, 4;
-    %load/x1p 17, v0x24b5ae0_0, 8;
-    %jmp T_1.68;
-T_1.67 ;
+    %jmp/1 T_1.60, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.61;
+T_1.60 ;
     %mov 17, 2, 8;
-T_1.68 ;
+T_1.61 ;
     %mov 8, 17, 8; Move signal select into place
     %mov 16, 0, 1;
     %cmpi/u 8, 0, 9;
-    %jmp/0xz  T_1.69, 4;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %jmp/0xz  T_1.62, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 0, 8;
-    %jmp/0xz  T_1.71, 4;
-    %set/v v0x24b5320_0, 1, 1;
-    %load/v 8, v0x24b5900_0, 1;
+    %jmp/0xz  T_1.64, 4;
+    %set/v v0x1cee550_0, 1, 1;
+    %load/v 8, v0x1ceed00_0, 1;
     %mov 9, 0, 1;
     %cmpi/u 8, 0, 2;
-    %jmp/0xz  T_1.73, 4;
-    %movi 8, 7, 16;
-    %set/v v0x24b4e40_0, 8, 16;
-    %set/v v0x24b5900_0, 1, 1;
-T_1.73 ;
-    %load/v 8, v0x24b4e40_0, 16;
+    %jmp/0xz  T_1.66, 4;
+    %movi 8, 8, 16;
+    %set/v v0x1cedf70_0, 8, 16;
+    %set/v v0x1ceed00_0, 1, 1;
+    %movi 8, 6, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %jmp T_1.67;
+T_1.66 ;
+    %load/v 8, v0x1cedf70_0, 16;
     %mov 24, 0, 1;
     %cmp/u 0, 8, 17;
-    %or 5, 4, 1;
-    %jmp/0xz  T_1.75, 5;
-    %load/v 8, v0x24b4e40_0, 16;
+    %jmp/0xz  T_1.68, 5;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 1;
+    %cmpi/u 8, 8, 17;
+    %jmp/0xz  T_1.70, 4;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1ced8d0_0, 8, 32;
+    %movi 8, 6, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.70 ;
+    %load/v 8, v0x1cedf70_0, 16;
     %mov 24, 0, 1;
     %cmpi/u 8, 7, 17;
-    %jmp/0xz  T_1.77, 4;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b4a30_0, 8, 32;
+    %jmp/0xz  T_1.72, 4;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1ced970_0, 8, 32;
     %movi 8, 6, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.77 ;
-    %load/v 8, v0x24b4e40_0, 16;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.72 ;
+    %load/v 8, v0x1cedf70_0, 16;
     %mov 24, 0, 1;
-    %cmpi/u 8, 6, 17;
-    %jmp/0xz  T_1.79, 4;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b4ad0_0, 8, 32;
+    %cmpi/u 8, 2, 17;
+    %jmp/0xz  T_1.74, 4;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee240_0, 8, 32;
     %movi 8, 6, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.79 ;
-    %movi 8, 1, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-    %load/v 8, v0x24b4e40_0, 16;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.74 ;
+    %load/v 8, v0x1cedf70_0, 16;
     %mov 24, 0, 1;
     %cmpi/u 8, 1, 17;
-    %jmp/0xz  T_1.81, 4;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b5170_0, 8, 32;
+    %jmp/0xz  T_1.76, 4;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee4d0_0, 8, 32;
     %movi 8, 6, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.81 ;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 1;
-    %cmpi/u 8, 0, 17;
-    %jmp/0xz  T_1.83, 4;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b5170_0, 8, 32;
-    %movi 8, 6, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.83 ;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 16;
-    %subi 8, 1, 32;
-    %set/v v0x24b4e40_0, 8, 16;
-    %jmp T_1.76;
-T_1.75 ;
-    %load/v 8, v0x24b4ad0_0, 32;
-    %load/v 40, v0x24b4a30_0, 32;
-    %set/v v0x2458850_0, 8, 64;
-    %set/v v0x24b5900_0, 0, 1;
-    %movi 8, 1, 5;
-    %set/v v0x24b53a0_0, 8, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
 T_1.76 ;
-T_1.71 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %cmpi/u 8, 1, 8;
-    %jmp/0xz  T_1.85, 4;
-    %set/v v0x24b5320_0, 1, 1;
-T_1.85 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %cmpi/u 8, 2, 8;
-    %jmp/0xz  T_1.87, 4;
-    %set/v v0x24b54e0_0, 1, 1;
-    %load/v 8, v0x24b5900_0, 1;
-    %mov 9, 0, 1;
-    %cmpi/u 8, 0, 2;
-    %jmp/0xz  T_1.89, 4;
-    %movi 8, 7, 16;
-    %set/v v0x24b4e40_0, 8, 16;
-    %set/v v0x24b5900_0, 1, 1;
-T_1.89 ;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 1;
-    %cmp/u 0, 8, 17;
-    %jmp/0xz  T_1.91, 5;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 1;
-    %cmpi/u 8, 7, 17;
-    %jmp/0xz  T_1.93, 4;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b4a30_0, 8, 32;
-    %movi 8, 6, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.93 ;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 1;
-    %cmpi/u 8, 6, 17;
-    %jmp/0xz  T_1.95, 4;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b4ad0_0, 8, 32;
-    %movi 8, 6, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.95 ;
-    %movi 8, 1, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 1;
-    %cmpi/u 8, 1, 17;
-    %jmp/0xz  T_1.97, 4;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b5170_0, 8, 32;
-    %movi 8, 6, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.97 ;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 1;
-    %cmpi/u 8, 0, 17;
-    %jmp/0xz  T_1.99, 4;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b5170_0, 8, 32;
-    %movi 8, 6, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.99 ;
-    %load/v 8, v0x24b4e40_0, 16;
+    %load/v 8, v0x1cedf70_0, 16;
     %mov 24, 0, 16;
     %subi 8, 1, 32;
-    %set/v v0x24b4e40_0, 8, 16;
-    %jmp T_1.92;
-T_1.91 ;
-    %load/v 8, v0x24b4ad0_0, 32;
-    %load/v 40, v0x24b4a30_0, 32;
-    %set/v v0x2458850_0, 8, 64;
-    %set/v v0x24b5900_0, 0, 1;
+    %set/v v0x1cedf70_0, 8, 16;
+    %jmp T_1.69;
+T_1.68 ;
     %movi 8, 1, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.92 ;
-T_1.87 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %cmpi/u 8, 3, 8;
-    %jmp/0xz  T_1.101, 4;
-    %set/v v0x24b54e0_0, 1, 1;
-T_1.101 ;
+    %set/v v0x1cee8e0_0, 8, 5;
 T_1.69 ;
-    %ix/load 1, 8, 0;
-    %mov 4, 0, 1;
-    %jmp/1 T_1.103, 4;
-    %load/x1p 17, v0x24b5ae0_0, 8;
-    %jmp T_1.104;
-T_1.103 ;
-    %mov 17, 2, 8;
-T_1.104 ;
-    %mov 8, 17, 8; Move signal select into place
-    %mov 16, 0, 1;
-    %cmpi/u 8, 0, 9;
-    %inv 4, 1;
-    %jmp/0xz  T_1.105, 4;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %cmpi/u 8, 0, 8;
-    %jmp/0xz  T_1.107, 4;
-    %set/v v0x24b5850_0, 1, 1;
-    %ix/load 1, 8, 0;
-    %mov 4, 0, 1;
-    %jmp/1 T_1.109, 4;
-    %load/x1p 8, v0x24b5ae0_0, 8;
-    %jmp T_1.110;
-T_1.109 ;
-    %mov 8, 2, 8;
-T_1.110 ;
-; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5280_0, 8, 8;
-    %load/v 8, v0x24b5ae0_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5440_0, 8, 8;
-    %load/v 8, v0x24b5900_0, 1;
-    %mov 9, 0, 1;
-    %cmpi/u 8, 0, 2;
-    %jmp/0xz  T_1.111, 4;
-    %movi 8, 7, 16;
-    %set/v v0x24b4e40_0, 8, 16;
-    %set/v v0x24b5900_0, 1, 1;
-T_1.111 ;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 1;
-    %cmp/u 0, 8, 17;
-    %or 5, 4, 1;
-    %jmp/0xz  T_1.113, 5;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 1;
-    %cmpi/u 8, 7, 17;
-    %jmp/0xz  T_1.115, 4;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b4a30_0, 8, 32;
-    %movi 8, 6, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.115 ;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 1;
-    %cmpi/u 8, 6, 17;
-    %jmp/0xz  T_1.117, 4;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b4ad0_0, 8, 32;
-    %movi 8, 6, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.117 ;
-    %movi 8, 1, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 1;
-    %cmpi/u 8, 1, 17;
-    %jmp/0xz  T_1.119, 4;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b5170_0, 8, 32;
-    %movi 8, 6, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.119 ;
-    %load/v 8, v0x24b4e40_0, 16;
+    %load/v 8, v0x1cedf70_0, 16;
     %mov 24, 0, 1;
     %cmpi/u 8, 0, 17;
-    %jmp/0xz  T_1.121, 4;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b5170_0, 8, 32;
+    %jmp/0xz  T_1.78, 4;
+    %load/v 8, v0x1ced970_0, 32;
+    %load/v 40, v0x1ced8d0_0, 32;
+    %set/v v0x1c64bf0_0, 8, 64;
+    %load/v 8, v0x1cee4d0_0, 32;
+    %load/v 40, v0x1cee240_0, 32;
+    %set/v v0x1cee1c0_0, 8, 64;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.78 ;
+T_1.67 ;
+T_1.64 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 1, 8;
+    %jmp/0xz  T_1.80, 4;
+    %set/v v0x1cee550_0, 1, 1;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.80 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 2, 8;
+    %jmp/0xz  T_1.82, 4;
+    %set/v v0x1cee6f0_0, 1, 1;
+    %load/v 8, v0x1ceed00_0, 1;
+    %mov 9, 0, 1;
+    %cmpi/u 8, 0, 2;
+    %jmp/0xz  T_1.84, 4;
+    %movi 8, 8, 16;
+    %set/v v0x1cedf70_0, 8, 16;
+    %set/v v0x1ceed00_0, 1, 1;
     %movi 8, 6, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.121 ;
-    %load/v 8, v0x24b4e40_0, 16;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %jmp T_1.85;
+T_1.84 ;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 1;
+    %cmp/u 0, 8, 17;
+    %jmp/0xz  T_1.86, 5;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 1;
+    %cmpi/u 8, 8, 17;
+    %jmp/0xz  T_1.88, 4;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1ced8d0_0, 8, 32;
+    %movi 8, 6, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.88 ;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 1;
+    %cmpi/u 8, 7, 17;
+    %jmp/0xz  T_1.90, 4;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1ced970_0, 8, 32;
+    %movi 8, 6, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.90 ;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 1;
+    %cmpi/u 8, 2, 17;
+    %jmp/0xz  T_1.92, 4;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee240_0, 8, 32;
+    %movi 8, 6, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.92 ;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 1;
+    %cmpi/u 8, 1, 17;
+    %jmp/0xz  T_1.94, 4;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee4d0_0, 8, 32;
+    %movi 8, 6, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.94 ;
+    %load/v 8, v0x1cedf70_0, 16;
     %mov 24, 0, 16;
     %subi 8, 1, 32;
-    %set/v v0x24b4e40_0, 8, 16;
-    %jmp T_1.114;
-T_1.113 ;
-    %load/v 8, v0x24b4ad0_0, 32;
-    %load/v 40, v0x24b4a30_0, 32;
-    %set/v v0x2458850_0, 8, 64;
-    %set/v v0x24b5900_0, 0, 1;
+    %set/v v0x1cedf70_0, 8, 16;
+    %jmp T_1.87;
+T_1.86 ;
+    %load/v 8, v0x1ced970_0, 32;
+    %load/v 40, v0x1ced8d0_0, 32;
+    %set/v v0x1c64bf0_0, 8, 64;
+    %load/v 8, v0x1cee4d0_0, 32;
+    %load/v 40, v0x1cee240_0, 32;
+    %set/v v0x1cee1c0_0, 8, 64;
+    %set/v v0x1ceed00_0, 0, 1;
     %movi 8, 1, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.114 ;
-T_1.107 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.87 ;
+T_1.85 ;
+T_1.82 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
-    %cmpi/u 8, 1, 8;
-    %jmp/0xz  T_1.123, 4;
+    %cmpi/u 8, 3, 8;
+    %jmp/0xz  T_1.96, 4;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %set/v v0x1cee6f0_0, 1, 1;
+T_1.96 ;
+T_1.62 ;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.125, 4;
-    %load/x1p 8, v0x24b5ae0_0, 8;
-    %jmp T_1.126;
-T_1.125 ;
+    %jmp/1 T_1.98, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.99;
+T_1.98 ;
+    %mov 17, 2, 8;
+T_1.99 ;
+    %mov 8, 17, 8; Move signal select into place
+    %mov 16, 0, 1;
+    %cmpi/u 8, 0, 9;
+    %inv 4, 1;
+    %jmp/0xz  T_1.100, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 0, 8;
+    %jmp/0xz  T_1.102, 4;
+    %set/v v0x1ceec10_0, 1, 1;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.104, 4;
+    %load/x1p 8, v0x1cef010_0, 8;
+    %jmp T_1.105;
+T_1.104 ;
     %mov 8, 2, 8;
-T_1.126 ;
-; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5280_0, 8, 8;
-    %load/v 8, v0x24b5ae0_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5440_0, 8, 8;
-    %set/v v0x24b5850_0, 1, 1;
-T_1.123 ;
 T_1.105 ;
-    %jmp T_1.18;
-T_1.5 ;
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee5f0_0, 8, 8;
+    %load/v 8, v0x1cef010_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee7a0_0, 8, 8;
+    %load/v 8, v0x1ceed00_0, 1;
+    %mov 9, 0, 1;
+    %cmpi/u 8, 0, 2;
+    %jmp/0xz  T_1.106, 4;
+    %movi 8, 8, 16;
+    %set/v v0x1cedf70_0, 8, 16;
+    %set/v v0x1ceed00_0, 1, 1;
+    %movi 8, 6, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %jmp T_1.107;
+T_1.106 ;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 1;
+    %cmp/u 0, 8, 17;
+    %jmp/0xz  T_1.108, 5;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 1;
+    %cmpi/u 8, 8, 17;
+    %jmp/0xz  T_1.110, 4;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1ced8d0_0, 8, 32;
+    %movi 8, 6, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.110 ;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 1;
+    %cmpi/u 8, 7, 17;
+    %jmp/0xz  T_1.112, 4;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1ced970_0, 8, 32;
+    %movi 8, 6, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.112 ;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 1;
+    %cmpi/u 8, 2, 17;
+    %jmp/0xz  T_1.114, 4;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee240_0, 8, 32;
+    %movi 8, 6, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.114 ;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 1;
+    %cmpi/u 8, 1, 17;
+    %jmp/0xz  T_1.116, 4;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee4d0_0, 8, 32;
+    %movi 8, 6, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.116 ;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 16;
+    %subi 8, 1, 32;
+    %set/v v0x1cedf70_0, 8, 16;
+    %jmp T_1.109;
+T_1.108 ;
+    %load/v 8, v0x1ced970_0, 32;
+    %load/v 40, v0x1ced8d0_0, 32;
+    %set/v v0x1c64bf0_0, 8, 64;
+    %load/v 8, v0x1cee4d0_0, 32;
+    %load/v 40, v0x1cee240_0, 32;
+    %set/v v0x1cee1c0_0, 8, 64;
+    %set/v v0x1ceed00_0, 0, 1;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.109 ;
+T_1.107 ;
+T_1.102 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 1, 8;
+    %jmp/0xz  T_1.118, 4;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.127, 4;
-    %load/x1p 17, v0x24b5ae0_0, 8;
-    %jmp T_1.128;
-T_1.127 ;
+    %jmp/1 T_1.120, 4;
+    %load/x1p 8, v0x1cef010_0, 8;
+    %jmp T_1.121;
+T_1.120 ;
+    %mov 8, 2, 8;
+T_1.121 ;
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee5f0_0, 8, 8;
+    %load/v 8, v0x1cef010_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee7a0_0, 8, 8;
+    %set/v v0x1ceec10_0, 1, 1;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.118 ;
+T_1.100 ;
+    %jmp T_1.17;
+T_1.3 ;
+    %set/v v0x1cedc40_0, 1, 1;
+    %load/v 8, v0x1cee670_0, 1;
+    %jmp/0xz  T_1.122, 8;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.124, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.125;
+T_1.124 ;
     %mov 17, 2, 8;
-T_1.128 ;
+T_1.125 ;
     %mov 8, 17, 8; Move signal select into place
     %mov 16, 0, 1;
     %cmpi/u 8, 0, 9;
-    %jmp/0xz  T_1.129, 4;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %jmp/0xz  T_1.126, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 0, 8;
-    %jmp/0xz  T_1.131, 4;
-    %set/v v0x24b5320_0, 1, 1;
-    %load/v 8, v0x24b5900_0, 1;
+    %jmp/0xz  T_1.128, 4;
+    %set/v v0x1cee550_0, 1, 1;
+    %load/v 8, v0x1ceed00_0, 1;
     %mov 9, 0, 1;
     %cmpi/u 8, 0, 2;
-    %jmp/0xz  T_1.133, 4;
-    %load/v 8, v0x24b5cf0_0, 16;
+    %jmp/0xz  T_1.130, 4;
+    %load/v 8, v0x1ceef00_0, 16;
     %mov 24, 0, 16;
     %addi 8, 1, 32;
-    %set/v v0x24b4e40_0, 8, 16;
-    %set/v v0x24b5900_0, 1, 1;
+    %set/v v0x1cedf70_0, 8, 16;
+    %set/v v0x1ceed00_0, 1, 1;
+    %load/v 8, v0x1c64bf0_0, 64;
+    %set/v v0x1ceed80_0, 8, 64;
+    %movi 8, 19, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.130 ;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 1;
+    %cmp/u 0, 8, 17;
+    %jmp/0xz  T_1.132, 5;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee380_0, 8, 32;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 16;
+    %subi 8, 1, 32;
+    %set/v v0x1cedf70_0, 8, 16;
+    %load/v 8, v0x1c64bf0_0, 64;
+    %mov 72, 0, 1;
+    %addi 8, 1, 65;
+    %set/v v0x1c64bf0_0, 8, 64;
+    %movi 8, 19, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %jmp T_1.133;
+T_1.132 ;
+    %load/v 8, v0x1ceed80_0, 64;
+    %set/v v0x1c64bf0_0, 8, 64;
+    %set/v v0x1ceed00_0, 0, 1;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
 T_1.133 ;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 1;
-    %cmp/u 0, 8, 17;
-    %or 5, 4, 1;
-    %jmp/0xz  T_1.135, 5;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b5170_0, 8, 32;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 16;
-    %subi 8, 1, 32;
-    %set/v v0x24b4e40_0, 8, 16;
-    %movi 8, 19, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.135 ;
-T_1.131 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+T_1.128 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 1, 8;
-    %jmp/0xz  T_1.137, 4;
-    %set/v v0x24b5320_0, 1, 1;
-T_1.137 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %jmp/0xz  T_1.134, 4;
+    %set/v v0x1cee550_0, 1, 1;
+T_1.134 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 2, 8;
-    %jmp/0xz  T_1.139, 4;
-    %set/v v0x24b54e0_0, 1, 1;
-    %load/v 8, v0x24b5900_0, 1;
+    %jmp/0xz  T_1.136, 4;
+    %set/v v0x1cee6f0_0, 1, 1;
+    %load/v 8, v0x1ceed00_0, 1;
     %mov 9, 0, 1;
     %cmpi/u 8, 0, 2;
-    %jmp/0xz  T_1.141, 4;
-    %load/v 8, v0x24b5cf0_0, 16;
+    %jmp/0xz  T_1.138, 4;
+    %load/v 8, v0x1ceef00_0, 16;
     %mov 24, 0, 16;
     %addi 8, 1, 32;
-    %set/v v0x24b4e40_0, 8, 16;
-    %set/v v0x24b5900_0, 1, 1;
+    %set/v v0x1cedf70_0, 8, 16;
+    %set/v v0x1ceed00_0, 1, 1;
+    %load/v 8, v0x1c64bf0_0, 64;
+    %set/v v0x1ceed80_0, 8, 64;
+T_1.138 ;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 1;
+    %cmp/u 0, 8, 17;
+    %jmp/0xz  T_1.140, 5;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee380_0, 8, 32;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 16;
+    %subi 8, 1, 32;
+    %set/v v0x1cedf70_0, 8, 16;
+    %load/v 8, v0x1c64bf0_0, 64;
+    %mov 72, 0, 1;
+    %addi 8, 1, 65;
+    %set/v v0x1c64bf0_0, 8, 64;
+    %movi 8, 19, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %jmp T_1.141;
+T_1.140 ;
+    %load/v 8, v0x1ceed80_0, 64;
+    %set/v v0x1c64bf0_0, 8, 64;
+    %set/v v0x1ceed00_0, 0, 1;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
 T_1.141 ;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 1;
-    %cmp/u 0, 8, 17;
-    %or 5, 4, 1;
-    %jmp/0xz  T_1.143, 5;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b5170_0, 8, 32;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 16;
-    %subi 8, 1, 32;
-    %set/v v0x24b4e40_0, 8, 16;
-    %movi 8, 19, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-    %jmp T_1.144;
-T_1.143 ;
-    %set/v v0x24b5900_0, 0, 1;
-    %movi 8, 1, 5;
-    %set/v v0x24b53a0_0, 8, 5;
+T_1.136 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 3, 8;
+    %jmp/0xz  T_1.142, 4;
+    %set/v v0x1cee6f0_0, 1, 1;
+T_1.142 ;
+T_1.126 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.144, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.145;
 T_1.144 ;
-T_1.139 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %cmpi/u 8, 3, 8;
-    %jmp/0xz  T_1.145, 4;
-    %set/v v0x24b54e0_0, 1, 1;
+    %mov 17, 2, 8;
 T_1.145 ;
-T_1.129 ;
-    %ix/load 1, 8, 0;
-    %mov 4, 0, 1;
-    %jmp/1 T_1.147, 4;
-    %load/x1p 17, v0x24b5ae0_0, 8;
-    %jmp T_1.148;
-T_1.147 ;
-    %mov 17, 2, 8;
-T_1.148 ;
     %mov 8, 17, 8; Move signal select into place
     %mov 16, 0, 1;
     %cmpi/u 8, 0, 9;
     %inv 4, 1;
-    %jmp/0xz  T_1.149, 4;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %jmp/0xz  T_1.146, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 0, 8;
-    %jmp/0xz  T_1.151, 4;
-    %set/v v0x24b5850_0, 1, 1;
+    %jmp/0xz  T_1.148, 4;
+    %set/v v0x1ceec10_0, 1, 1;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.153, 4;
-    %load/x1p 8, v0x24b5ae0_0, 8;
-    %jmp T_1.154;
-T_1.153 ;
+    %jmp/1 T_1.150, 4;
+    %load/x1p 8, v0x1cef010_0, 8;
+    %jmp T_1.151;
+T_1.150 ;
     %mov 8, 2, 8;
-T_1.154 ;
-; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5280_0, 8, 8;
-    %load/v 8, v0x24b5ae0_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5440_0, 8, 8;
-    %load/v 8, v0x24b5900_0, 1;
-    %mov 9, 0, 1;
-    %cmpi/u 8, 0, 2;
-    %jmp/0xz  T_1.155, 4;
-    %load/v 8, v0x24b5cf0_0, 16;
-    %mov 24, 0, 16;
-    %addi 8, 1, 32;
-    %set/v v0x24b4e40_0, 8, 16;
-    %set/v v0x24b5900_0, 1, 1;
-T_1.155 ;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 1;
-    %cmp/u 0, 8, 17;
-    %or 5, 4, 1;
-    %jmp/0xz  T_1.157, 5;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b5170_0, 8, 32;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 16;
-    %subi 8, 1, 32;
-    %set/v v0x24b4e40_0, 8, 16;
-    %movi 8, 19, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-    %jmp T_1.158;
-T_1.157 ;
-    %set/v v0x24b5900_0, 0, 1;
-    %movi 8, 1, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.158 ;
 T_1.151 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee5f0_0, 8, 8;
+    %load/v 8, v0x1cef010_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee7a0_0, 8, 8;
+    %load/v 8, v0x1ceed00_0, 1;
+    %mov 9, 0, 1;
+    %cmpi/u 8, 0, 2;
+    %jmp/0xz  T_1.152, 4;
+    %load/v 8, v0x1ceef00_0, 16;
+    %mov 24, 0, 16;
+    %addi 8, 1, 32;
+    %set/v v0x1cedf70_0, 8, 16;
+    %set/v v0x1ceed00_0, 1, 1;
+    %load/v 8, v0x1c64bf0_0, 64;
+    %set/v v0x1ceed80_0, 8, 64;
+    %movi 8, 19, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.152 ;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 1;
+    %cmp/u 0, 8, 17;
+    %jmp/0xz  T_1.154, 5;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee380_0, 8, 32;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 16;
+    %subi 8, 1, 32;
+    %set/v v0x1cedf70_0, 8, 16;
+    %load/v 8, v0x1c64bf0_0, 64;
+    %mov 72, 0, 1;
+    %addi 8, 1, 65;
+    %set/v v0x1c64bf0_0, 8, 64;
+    %movi 8, 19, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %jmp T_1.155;
+T_1.154 ;
+    %set/v v0x1ceed00_0, 0, 1;
+    %load/v 8, v0x1ceed80_0, 64;
+    %set/v v0x1c64bf0_0, 8, 64;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.155 ;
+T_1.148 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 1, 8;
-    %jmp/0xz  T_1.159, 4;
+    %jmp/0xz  T_1.156, 4;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.161, 4;
-    %load/x1p 8, v0x24b5ae0_0, 8;
-    %jmp T_1.162;
-T_1.161 ;
+    %jmp/1 T_1.158, 4;
+    %load/x1p 8, v0x1cef010_0, 8;
+    %jmp T_1.159;
+T_1.158 ;
     %mov 8, 2, 8;
-T_1.162 ;
-; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5280_0, 8, 8;
-    %load/v 8, v0x24b5ae0_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5440_0, 8, 8;
-    %set/v v0x24b5850_0, 1, 1;
 T_1.159 ;
-T_1.149 ;
-    %jmp T_1.18;
-T_1.6 ;
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee5f0_0, 8, 8;
+    %load/v 8, v0x1cef010_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee7a0_0, 8, 8;
+    %set/v v0x1ceec10_0, 1, 1;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.156 ;
+T_1.146 ;
+T_1.122 ;
+    %jmp T_1.17;
+T_1.4 ;
+    %set/v v0x1cedc40_0, 1, 1;
+    %load/v 8, v0x1cee670_0, 1;
+    %jmp/0xz  T_1.160, 8;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.163, 4;
-    %load/x1p 17, v0x24b5ae0_0, 8;
-    %jmp T_1.164;
+    %jmp/1 T_1.162, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.163;
+T_1.162 ;
+    %mov 17, 2, 8;
 T_1.163 ;
-    %mov 17, 2, 8;
+    %mov 8, 17, 8; Move signal select into place
+    %mov 16, 0, 1;
+    %cmpi/u 8, 0, 9;
+    %jmp/0xz  T_1.164, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 0, 8;
+    %jmp/0xz  T_1.166, 4;
+    %set/v v0x1cee550_0, 1, 1;
+    %load/v 8, v0x1ceea30_0, 64;
+    %set/v v0x1c64bf0_0, 8, 64;
+T_1.166 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 1, 8;
+    %jmp/0xz  T_1.168, 4;
+    %set/v v0x1cee550_0, 1, 1;
+T_1.168 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 2, 8;
+    %jmp/0xz  T_1.170, 4;
+    %set/v v0x1cee6f0_0, 1, 1;
+    %load/v 8, v0x1ceea30_0, 64;
+    %set/v v0x1c64bf0_0, 8, 64;
+T_1.170 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 3, 8;
+    %jmp/0xz  T_1.172, 4;
+    %set/v v0x1cee6f0_0, 1, 1;
+T_1.172 ;
 T_1.164 ;
-    %mov 8, 17, 8; Move signal select into place
-    %mov 16, 0, 1;
-    %cmpi/u 8, 0, 9;
-    %jmp/0xz  T_1.165, 4;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %cmpi/u 8, 0, 8;
-    %jmp/0xz  T_1.167, 4;
-    %set/v v0x24b5320_0, 1, 1;
-    %load/v 8, v0x24b5750_0, 64;
-    %set/v v0x2458850_0, 8, 64;
-T_1.167 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %cmpi/u 8, 1, 8;
-    %jmp/0xz  T_1.169, 4;
-    %set/v v0x24b5320_0, 1, 1;
-T_1.169 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %cmpi/u 8, 2, 8;
-    %jmp/0xz  T_1.171, 4;
-    %set/v v0x24b54e0_0, 1, 1;
-    %load/v 8, v0x24b5750_0, 64;
-    %set/v v0x2458850_0, 8, 64;
-T_1.171 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %cmpi/u 8, 3, 8;
-    %jmp/0xz  T_1.173, 4;
-    %set/v v0x24b54e0_0, 1, 1;
-T_1.173 ;
-T_1.165 ;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.175, 4;
-    %load/x1p 17, v0x24b5ae0_0, 8;
-    %jmp T_1.176;
+    %jmp/1 T_1.174, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.175;
+T_1.174 ;
+    %mov 17, 2, 8;
 T_1.175 ;
-    %mov 17, 2, 8;
-T_1.176 ;
     %mov 8, 17, 8; Move signal select into place
     %mov 16, 0, 1;
     %cmpi/u 8, 0, 9;
     %inv 4, 1;
-    %jmp/0xz  T_1.177, 4;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %jmp/0xz  T_1.176, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 0, 8;
-    %jmp/0xz  T_1.179, 4;
-    %set/v v0x24b5850_0, 1, 1;
+    %jmp/0xz  T_1.178, 4;
+    %set/v v0x1ceec10_0, 1, 1;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.181, 4;
-    %load/x1p 8, v0x24b5ae0_0, 8;
-    %jmp T_1.182;
+    %jmp/1 T_1.180, 4;
+    %load/x1p 8, v0x1cef010_0, 8;
+    %jmp T_1.181;
+T_1.180 ;
+    %mov 8, 2, 8;
 T_1.181 ;
-    %mov 8, 2, 8;
-T_1.182 ;
 ; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5280_0, 8, 8;
-    %load/v 8, v0x24b5ae0_0, 8; Only need 8 of 16 bits
+    %set/v v0x1cee5f0_0, 8, 8;
+    %load/v 8, v0x1cef010_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5440_0, 8, 8;
-    %load/v 8, v0x24b5750_0, 64;
-    %set/v v0x2458850_0, 8, 64;
-T_1.179 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %set/v v0x1cee7a0_0, 8, 8;
+    %load/v 8, v0x1ceea30_0, 64;
+    %set/v v0x1c64bf0_0, 8, 64;
+T_1.178 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 1, 8;
-    %jmp/0xz  T_1.183, 4;
+    %jmp/0xz  T_1.182, 4;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.185, 4;
-    %load/x1p 8, v0x24b5ae0_0, 8;
-    %jmp T_1.186;
+    %jmp/1 T_1.184, 4;
+    %load/x1p 8, v0x1cef010_0, 8;
+    %jmp T_1.185;
+T_1.184 ;
+    %mov 8, 2, 8;
 T_1.185 ;
-    %mov 8, 2, 8;
-T_1.186 ;
 ; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5280_0, 8, 8;
-    %load/v 8, v0x24b5ae0_0, 8; Only need 8 of 16 bits
+    %set/v v0x1cee5f0_0, 8, 8;
+    %load/v 8, v0x1cef010_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5440_0, 8, 8;
-    %set/v v0x24b5850_0, 1, 1;
-T_1.183 ;
-T_1.177 ;
-    %jmp T_1.18;
-T_1.7 ;
-    %jmp T_1.18;
-T_1.8 ;
+    %set/v v0x1cee7a0_0, 8, 8;
+    %set/v v0x1ceec10_0, 1, 1;
+T_1.182 ;
+T_1.176 ;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.160 ;
+    %jmp T_1.17;
+T_1.5 ;
+    %set/v v0x1cedc40_0, 1, 1;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %jmp T_1.17;
+T_1.6 ;
+    %set/v v0x1cedc40_0, 1, 1;
+    %load/v 8, v0x1cee670_0, 1;
+    %jmp/0xz  T_1.186, 8;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.187, 4;
-    %load/x1p 17, v0x24b5ae0_0, 8;
-    %jmp T_1.188;
-T_1.187 ;
-    %mov 17, 2, 8;
+    %jmp/1 T_1.188, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.189;
 T_1.188 ;
-    %mov 8, 17, 8; Move signal select into place
-    %mov 16, 0, 1;
-    %cmpi/u 8, 0, 9;
-    %jmp/0xz  T_1.189, 4;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %cmpi/u 8, 0, 8;
-    %jmp/0xz  T_1.191, 4;
-    %set/v v0x24b5320_0, 1, 1;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b57d0_0, 8, 32;
-T_1.191 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %cmpi/u 8, 2, 8;
-    %jmp/0xz  T_1.193, 4;
-    %set/v v0x24b54e0_0, 1, 1;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b57d0_0, 8, 32;
-T_1.193 ;
+    %mov 17, 2, 8;
 T_1.189 ;
+    %mov 8, 17, 8; Move signal select into place
+    %mov 16, 0, 1;
+    %cmpi/u 8, 0, 9;
+    %jmp/0xz  T_1.190, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 0, 8;
+    %jmp/0xz  T_1.192, 4;
+    %set/v v0x1cee550_0, 1, 1;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee980_0, 8, 32;
+T_1.192 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 2, 8;
+    %jmp/0xz  T_1.194, 4;
+    %set/v v0x1cee6f0_0, 1, 1;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee980_0, 8, 32;
+T_1.194 ;
+T_1.190 ;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.195, 4;
-    %load/x1p 17, v0x24b5ae0_0, 8;
-    %jmp T_1.196;
-T_1.195 ;
-    %mov 17, 2, 8;
+    %jmp/1 T_1.196, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.197;
 T_1.196 ;
-    %mov 8, 17, 8; Move signal select into place
-    %mov 16, 0, 1;
-    %cmpi/u 8, 0, 9;
-    %inv 4, 1;
-    %jmp/0xz  T_1.197, 4;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %cmpi/u 8, 0, 8;
-    %jmp/0xz  T_1.199, 4;
-    %set/v v0x24b5850_0, 1, 1;
-    %ix/load 1, 8, 0;
-    %mov 4, 0, 1;
-    %jmp/1 T_1.201, 4;
-    %load/x1p 8, v0x24b5ae0_0, 8;
-    %jmp T_1.202;
-T_1.201 ;
-    %mov 8, 2, 8;
-T_1.202 ;
-; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5280_0, 8, 8;
-    %load/v 8, v0x24b5ae0_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5440_0, 8, 8;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b57d0_0, 8, 32;
-T_1.199 ;
+    %mov 17, 2, 8;
 T_1.197 ;
-    %jmp T_1.18;
-T_1.9 ;
-    %jmp T_1.18;
-T_1.10 ;
-    %jmp T_1.18;
-T_1.11 ;
-    %jmp T_1.18;
-T_1.12 ;
+    %mov 8, 17, 8; Move signal select into place
+    %mov 16, 0, 1;
+    %cmpi/u 8, 0, 9;
+    %inv 4, 1;
+    %jmp/0xz  T_1.198, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 0, 8;
+    %jmp/0xz  T_1.200, 4;
+    %set/v v0x1ceec10_0, 1, 1;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.203, 4;
-    %load/x1p 17, v0x24b5ae0_0, 8;
-    %jmp T_1.204;
+    %jmp/1 T_1.202, 4;
+    %load/x1p 8, v0x1cef010_0, 8;
+    %jmp T_1.203;
+T_1.202 ;
+    %mov 8, 2, 8;
 T_1.203 ;
-    %mov 17, 2, 8;
-T_1.204 ;
-    %mov 8, 17, 8; Move signal select into place
-    %mov 16, 0, 1;
-    %cmpi/u 8, 0, 9;
-    %jmp/0xz  T_1.205, 4;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
-    %cmpi/u 8, 0, 8;
-    %jmp/0xz  T_1.207, 4;
-    %set/v v0x24b5320_0, 1, 1;
-    %load/v 8, v0x24b5900_0, 1;
-    %mov 9, 0, 1;
-    %cmpi/u 8, 0, 2;
-    %jmp/0xz  T_1.209, 4;
-    %load/v 8, v0x2458850_0, 64;
-    %set/v v0x24b5b90_0, 8, 64;
-    %load/v 8, v0x24b5cf0_0, 16;
-    %mov 24, 0, 16;
-    %addi 8, 1, 32;
-    %set/v v0x24b4e40_0, 8, 16;
-    %set/v v0x24b5900_0, 1, 1;
-T_1.209 ;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 1;
-    %cmp/u 0, 8, 17;
-    %or 5, 4, 1;
-    %jmp/0xz  T_1.211, 5;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b5170_0, 8, 32;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 16;
-    %subi 8, 1, 32;
-    %set/v v0x24b4e40_0, 8, 16;
-    %movi 8, 12, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.211 ;
+    %set/v v0x1cee5f0_0, 8, 8;
+    %load/v 8, v0x1cef010_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee7a0_0, 8, 8;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee980_0, 8, 32;
+T_1.200 ;
+T_1.198 ;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.186 ;
+    %jmp T_1.17;
+T_1.7 ;
+    %set/v v0x1cedc40_0, 1, 1;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %load/v 8, v0x1cee670_0, 1;
+    %jmp/0xz  T_1.204, 8;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.206, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.207;
+T_1.206 ;
+    %mov 17, 2, 8;
 T_1.207 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %mov 8, 17, 8; Move signal select into place
+    %mov 16, 0, 1;
+    %cmpi/u 8, 0, 9;
+    %jmp/0xz  T_1.208, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
-    %cmpi/u 8, 1, 8;
-    %jmp/0xz  T_1.213, 4;
-    %set/v v0x24b5320_0, 1, 1;
+    %cmpi/u 8, 0, 8;
+    %jmp/0xz  T_1.210, 4;
+    %set/v v0x1cee550_0, 1, 1;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee980_0, 8, 32;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.212, 4;
+    %load/x1p 23, v0x1cef010_0, 8;
+    %jmp T_1.213;
+T_1.212 ;
+    %mov 23, 2, 8;
 T_1.213 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %mov 8, 23, 8; Move signal select into place
+    %mov 16, 0, 7;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x1cede70_0, 8, 15;
+T_1.210 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 2, 8;
-    %jmp/0xz  T_1.215, 4;
-    %set/v v0x24b54e0_0, 1, 1;
-    %load/v 8, v0x24b5900_0, 1;
-    %mov 9, 0, 1;
-    %cmpi/u 8, 0, 2;
-    %jmp/0xz  T_1.217, 4;
-    %load/v 8, v0x24b5cf0_0, 16;
-    %mov 24, 0, 16;
-    %addi 8, 1, 32;
-    %set/v v0x24b4e40_0, 8, 16;
-    %set/v v0x24b5900_0, 1, 1;
+    %jmp/0xz  T_1.214, 4;
+    %set/v v0x1cee6f0_0, 1, 1;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee980_0, 8, 32;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.216, 4;
+    %load/x1p 23, v0x1cef010_0, 8;
+    %jmp T_1.217;
+T_1.216 ;
+    %mov 23, 2, 8;
 T_1.217 ;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 1;
-    %cmp/u 0, 8, 17;
-    %or 5, 4, 1;
-    %jmp/0xz  T_1.219, 5;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b5170_0, 8, 32;
-    %load/v 8, v0x24b4e40_0, 16;
-    %mov 24, 0, 16;
-    %subi 8, 1, 32;
-    %set/v v0x24b4e40_0, 8, 16;
-    %movi 8, 12, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-    %jmp T_1.220;
-T_1.219 ;
-    %set/v v0x24b5900_0, 0, 1;
-    %movi 8, 1, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.220 ;
-T_1.215 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %cmpi/u 8, 3, 8;
-    %jmp/0xz  T_1.221, 4;
-    %set/v v0x24b54e0_0, 1, 1;
-T_1.221 ;
-T_1.205 ;
+    %mov 8, 23, 8; Move signal select into place
+    %mov 16, 0, 7;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x1cede70_0, 8, 15;
+T_1.214 ;
+T_1.208 ;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.223, 4;
-    %load/x1p 17, v0x24b5ae0_0, 8;
-    %jmp T_1.224;
-T_1.223 ;
+    %jmp/1 T_1.218, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.219;
+T_1.218 ;
     %mov 17, 2, 8;
-T_1.224 ;
+T_1.219 ;
     %mov 8, 17, 8; Move signal select into place
     %mov 16, 0, 1;
     %cmpi/u 8, 0, 9;
     %inv 4, 1;
-    %jmp/0xz  T_1.225, 4;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %jmp/0xz  T_1.220, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 0, 8;
-    %jmp/0xz  T_1.227, 4;
-    %set/v v0x24b5850_0, 1, 1;
+    %jmp/0xz  T_1.222, 4;
+    %set/v v0x1ceec10_0, 1, 1;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.229, 4;
-    %load/x1p 8, v0x24b5ae0_0, 8;
-    %jmp T_1.230;
-T_1.229 ;
+    %jmp/1 T_1.224, 4;
+    %load/x1p 8, v0x1cef010_0, 8;
+    %jmp T_1.225;
+T_1.224 ;
     %mov 8, 2, 8;
+T_1.225 ;
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee5f0_0, 8, 8;
+    %load/v 8, v0x1cef010_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee7a0_0, 8, 8;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.226, 4;
+    %load/x1p 23, v0x1cef010_0, 8;
+    %jmp T_1.227;
+T_1.226 ;
+    %mov 23, 2, 8;
+T_1.227 ;
+    %mov 8, 23, 8; Move signal select into place
+    %mov 16, 0, 7;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x1cede70_0, 8, 15;
+T_1.222 ;
+T_1.220 ;
+T_1.204 ;
+    %jmp T_1.17;
+T_1.8 ;
+    %set/v v0x1cedc40_0, 1, 1;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %load/v 8, v0x1cee670_0, 1;
+    %jmp/0xz  T_1.228, 8;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.230, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.231;
 T_1.230 ;
+    %mov 17, 2, 8;
+T_1.231 ;
+    %mov 8, 17, 8; Move signal select into place
+    %mov 16, 0, 1;
+    %cmpi/u 8, 0, 9;
+    %jmp/0xz  T_1.232, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5280_0, 8, 8;
-    %load/v 8, v0x24b5ae0_0, 8; Only need 8 of 16 bits
+    %cmpi/u 8, 0, 8;
+    %jmp/0xz  T_1.234, 4;
+    %set/v v0x1cee550_0, 1, 1;
+    %load/v 8, v0x1ceea30_0, 64;
+    %set/v v0x1cedb60_0, 8, 64;
+T_1.234 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5440_0, 8, 8;
-    %load/v 8, v0x24b5900_0, 1;
+    %cmpi/u 8, 2, 8;
+    %jmp/0xz  T_1.236, 4;
+    %set/v v0x1cee6f0_0, 1, 1;
+    %load/v 8, v0x1ceea30_0, 64;
+    %set/v v0x1cedb60_0, 8, 64;
+T_1.236 ;
+T_1.232 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.238, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.239;
+T_1.238 ;
+    %mov 17, 2, 8;
+T_1.239 ;
+    %mov 8, 17, 8; Move signal select into place
+    %mov 16, 0, 1;
+    %cmpi/u 8, 0, 9;
+    %inv 4, 1;
+    %jmp/0xz  T_1.240, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 0, 8;
+    %jmp/0xz  T_1.242, 4;
+    %set/v v0x1ceec10_0, 1, 1;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.244, 4;
+    %load/x1p 8, v0x1cef010_0, 8;
+    %jmp T_1.245;
+T_1.244 ;
+    %mov 8, 2, 8;
+T_1.245 ;
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee5f0_0, 8, 8;
+    %load/v 8, v0x1cef010_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee7a0_0, 8, 8;
+    %load/v 8, v0x1ceea30_0, 64;
+    %set/v v0x1cedb60_0, 8, 64;
+T_1.242 ;
+T_1.240 ;
+T_1.228 ;
+    %jmp T_1.17;
+T_1.9 ;
+    %set/v v0x1cedc40_0, 1, 1;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %load/v 8, v0x1cee670_0, 1;
+    %jmp/0xz  T_1.246, 8;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.248, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.249;
+T_1.248 ;
+    %mov 17, 2, 8;
+T_1.249 ;
+    %mov 8, 17, 8; Move signal select into place
+    %mov 16, 0, 1;
+    %cmpi/u 8, 0, 9;
+    %jmp/0xz  T_1.250, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 0, 8;
+    %jmp/0xz  T_1.252, 4;
+    %set/v v0x1cee550_0, 1, 1;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee120_0, 8, 32;
+T_1.252 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 2, 8;
+    %jmp/0xz  T_1.254, 4;
+    %set/v v0x1cee6f0_0, 1, 1;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee120_0, 8, 32;
+T_1.254 ;
+T_1.250 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.256, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.257;
+T_1.256 ;
+    %mov 17, 2, 8;
+T_1.257 ;
+    %mov 8, 17, 8; Move signal select into place
+    %mov 16, 0, 1;
+    %cmpi/u 8, 0, 9;
+    %inv 4, 1;
+    %jmp/0xz  T_1.258, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 0, 8;
+    %jmp/0xz  T_1.260, 4;
+    %set/v v0x1ceec10_0, 1, 1;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.262, 4;
+    %load/x1p 8, v0x1cef010_0, 8;
+    %jmp T_1.263;
+T_1.262 ;
+    %mov 8, 2, 8;
+T_1.263 ;
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee5f0_0, 8, 8;
+    %load/v 8, v0x1cef010_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee7a0_0, 8, 8;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee120_0, 8, 32;
+T_1.260 ;
+T_1.258 ;
+T_1.246 ;
+    %jmp T_1.17;
+T_1.10 ;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %load/v 8, v0x1cee670_0, 1;
+    %jmp/0xz  T_1.264, 8;
+    %set/v v0x1cedc40_0, 1, 1;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.266, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.267;
+T_1.266 ;
+    %mov 17, 2, 8;
+T_1.267 ;
+    %mov 8, 17, 8; Move signal select into place
+    %mov 16, 0, 1;
+    %cmpi/u 8, 0, 9;
+    %jmp/0xz  T_1.268, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 0, 8;
+    %jmp/0xz  T_1.270, 4;
+    %set/v v0x1cee550_0, 1, 1;
+    %set/v v0x1ceeb90_0, 1, 1;
+T_1.270 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 2, 8;
+    %jmp/0xz  T_1.272, 4;
+    %set/v v0x1cee6f0_0, 1, 1;
+    %set/v v0x1ceeb90_0, 1, 1;
+T_1.272 ;
+T_1.268 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.274, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.275;
+T_1.274 ;
+    %mov 17, 2, 8;
+T_1.275 ;
+    %mov 8, 17, 8; Move signal select into place
+    %mov 16, 0, 1;
+    %cmpi/u 8, 0, 9;
+    %inv 4, 1;
+    %jmp/0xz  T_1.276, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 0, 8;
+    %jmp/0xz  T_1.278, 4;
+    %set/v v0x1ceec10_0, 1, 1;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.280, 4;
+    %load/x1p 8, v0x1cef010_0, 8;
+    %jmp T_1.281;
+T_1.280 ;
+    %mov 8, 2, 8;
+T_1.281 ;
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee5f0_0, 8, 8;
+    %load/v 8, v0x1cef010_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee7a0_0, 8, 8;
+    %set/v v0x1ceeb90_0, 1, 1;
+T_1.278 ;
+T_1.276 ;
+T_1.264 ;
+    %jmp T_1.17;
+T_1.11 ;
+    %set/v v0x1cedc40_0, 1, 1;
+    %load/v 8, v0x1cee670_0, 1;
+    %jmp/0xz  T_1.282, 8;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.284, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.285;
+T_1.284 ;
+    %mov 17, 2, 8;
+T_1.285 ;
+    %mov 8, 17, 8; Move signal select into place
+    %mov 16, 0, 1;
+    %cmpi/u 8, 0, 9;
+    %jmp/0xz  T_1.286, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 0, 8;
+    %jmp/0xz  T_1.288, 4;
+    %set/v v0x1cee550_0, 1, 1;
+    %load/v 8, v0x1ceed00_0, 1;
     %mov 9, 0, 1;
     %cmpi/u 8, 0, 2;
-    %jmp/0xz  T_1.231, 4;
-    %load/v 8, v0x24b5cf0_0, 16;
+    %jmp/0xz  T_1.290, 4;
+    %load/v 8, v0x1c64bf0_0, 64;
+    %set/v v0x1ceed80_0, 8, 64;
+    %load/v 8, v0x1ceef00_0, 16;
     %mov 24, 0, 16;
     %addi 8, 1, 32;
-    %set/v v0x24b4e40_0, 8, 16;
-    %set/v v0x24b5900_0, 1, 1;
-T_1.231 ;
-    %load/v 8, v0x24b4e40_0, 16;
+    %set/v v0x1cedf70_0, 8, 16;
+    %set/v v0x1ceed00_0, 1, 1;
+T_1.290 ;
+    %load/v 8, v0x1cedf70_0, 16;
     %mov 24, 0, 1;
     %cmp/u 0, 8, 17;
     %or 5, 4, 1;
-    %jmp/0xz  T_1.233, 5;
-    %load/v 8, v0x24b5630_0, 32;
-    %set/v v0x24b5170_0, 8, 32;
-    %load/v 8, v0x24b4e40_0, 16;
+    %jmp/0xz  T_1.292, 5;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee380_0, 8, 32;
+    %load/v 8, v0x1cedf70_0, 16;
     %mov 24, 0, 16;
     %subi 8, 1, 32;
-    %set/v v0x24b4e40_0, 8, 16;
+    %set/v v0x1cedf70_0, 8, 16;
     %movi 8, 12, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-    %jmp T_1.234;
-T_1.233 ;
-    %set/v v0x24b5900_0, 0, 1;
-    %movi 8, 1, 5;
-    %set/v v0x24b53a0_0, 8, 5;
-T_1.234 ;
-T_1.227 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.292 ;
+T_1.288 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 1, 8;
-    %jmp/0xz  T_1.235, 4;
-    %ix/load 1, 8, 0;
-    %mov 4, 0, 1;
-    %jmp/1 T_1.237, 4;
-    %load/x1p 8, v0x24b5ae0_0, 8;
-    %jmp T_1.238;
-T_1.237 ;
-    %mov 8, 2, 8;
-T_1.238 ;
-; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5280_0, 8, 8;
-    %load/v 8, v0x24b5ae0_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5440_0, 8, 8;
-    %set/v v0x24b5850_0, 1, 1;
-T_1.235 ;
-T_1.225 ;
-    %jmp T_1.18;
-T_1.13 ;
-    %ix/load 1, 8, 0;
-    %mov 4, 0, 1;
-    %jmp/1 T_1.239, 4;
-    %load/x1p 17, v0x24b5ae0_0, 8;
-    %jmp T_1.240;
-T_1.239 ;
-    %mov 17, 2, 8;
-T_1.240 ;
-    %mov 8, 17, 8; Move signal select into place
-    %mov 16, 0, 1;
-    %cmpi/u 8, 0, 9;
-    %jmp/0xz  T_1.241, 4;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %cmpi/u 8, 0, 8;
-    %jmp/0xz  T_1.243, 4;
-    %set/v v0x24b5320_0, 1, 1;
-    %load/v 8, v0x2458850_0, 64;
-    %set/v v0x24b50d0_0, 8, 64;
-T_1.243 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
-; Save base=8 wid=8 in lookaside.
-    %cmpi/u 8, 1, 8;
-    %jmp/0xz  T_1.245, 4;
-    %set/v v0x24b5320_0, 1, 1;
-T_1.245 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %jmp/0xz  T_1.294, 4;
+    %set/v v0x1cee550_0, 1, 1;
+T_1.294 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 2, 8;
-    %jmp/0xz  T_1.247, 4;
-    %set/v v0x24b54e0_0, 1, 1;
-    %load/v 8, v0x2458850_0, 64;
-    %set/v v0x24b50d0_0, 8, 64;
-T_1.247 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %jmp/0xz  T_1.296, 4;
+    %set/v v0x1cee6f0_0, 1, 1;
+    %load/v 8, v0x1ceed00_0, 1;
+    %mov 9, 0, 1;
+    %cmpi/u 8, 0, 2;
+    %jmp/0xz  T_1.298, 4;
+    %load/v 8, v0x1ceef00_0, 16;
+    %mov 24, 0, 16;
+    %addi 8, 1, 32;
+    %set/v v0x1cedf70_0, 8, 16;
+    %set/v v0x1ceed00_0, 1, 1;
+T_1.298 ;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 1;
+    %cmp/u 0, 8, 17;
+    %or 5, 4, 1;
+    %jmp/0xz  T_1.300, 5;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee380_0, 8, 32;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 16;
+    %subi 8, 1, 32;
+    %set/v v0x1cedf70_0, 8, 16;
+    %movi 8, 12, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %jmp T_1.301;
+T_1.300 ;
+    %set/v v0x1ceed00_0, 0, 1;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.301 ;
+T_1.296 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 3, 8;
-    %jmp/0xz  T_1.249, 4;
-    %set/v v0x24b54e0_0, 1, 1;
-T_1.249 ;
-T_1.241 ;
+    %jmp/0xz  T_1.302, 4;
+    %set/v v0x1cee6f0_0, 1, 1;
+T_1.302 ;
+T_1.286 ;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.251, 4;
-    %load/x1p 17, v0x24b5ae0_0, 8;
-    %jmp T_1.252;
-T_1.251 ;
+    %jmp/1 T_1.304, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.305;
+T_1.304 ;
     %mov 17, 2, 8;
-T_1.252 ;
+T_1.305 ;
     %mov 8, 17, 8; Move signal select into place
     %mov 16, 0, 1;
     %cmpi/u 8, 0, 9;
     %inv 4, 1;
-    %jmp/0xz  T_1.253, 4;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %jmp/0xz  T_1.306, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 0, 8;
-    %jmp/0xz  T_1.255, 4;
-    %set/v v0x24b5850_0, 1, 1;
+    %jmp/0xz  T_1.308, 4;
+    %set/v v0x1ceec10_0, 1, 1;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.257, 4;
-    %load/x1p 8, v0x24b5ae0_0, 8;
-    %jmp T_1.258;
-T_1.257 ;
+    %jmp/1 T_1.310, 4;
+    %load/x1p 8, v0x1cef010_0, 8;
+    %jmp T_1.311;
+T_1.310 ;
     %mov 8, 2, 8;
-T_1.258 ;
+T_1.311 ;
 ; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5280_0, 8, 8;
-    %load/v 8, v0x24b5ae0_0, 8; Only need 8 of 16 bits
+    %set/v v0x1cee5f0_0, 8, 8;
+    %load/v 8, v0x1cef010_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5440_0, 8, 8;
-    %load/v 8, v0x2458850_0, 64;
-    %set/v v0x24b50d0_0, 8, 64;
-T_1.255 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %set/v v0x1cee7a0_0, 8, 8;
+    %load/v 8, v0x1ceed00_0, 1;
+    %mov 9, 0, 1;
+    %cmpi/u 8, 0, 2;
+    %jmp/0xz  T_1.312, 4;
+    %load/v 8, v0x1ceef00_0, 16;
+    %mov 24, 0, 16;
+    %addi 8, 1, 32;
+    %set/v v0x1cedf70_0, 8, 16;
+    %set/v v0x1ceed00_0, 1, 1;
+T_1.312 ;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 1;
+    %cmp/u 0, 8, 17;
+    %or 5, 4, 1;
+    %jmp/0xz  T_1.314, 5;
+    %load/v 8, v0x1cee840_0, 32;
+    %set/v v0x1cee380_0, 8, 32;
+    %load/v 8, v0x1cedf70_0, 16;
+    %mov 24, 0, 16;
+    %subi 8, 1, 32;
+    %set/v v0x1cedf70_0, 8, 16;
+    %movi 8, 12, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %jmp T_1.315;
+T_1.314 ;
+    %set/v v0x1ceed00_0, 0, 1;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+T_1.315 ;
+T_1.308 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 1, 8;
-    %jmp/0xz  T_1.259, 4;
+    %jmp/0xz  T_1.316, 4;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.261, 4;
-    %load/x1p 8, v0x24b5ae0_0, 8;
-    %jmp T_1.262;
-T_1.261 ;
+    %jmp/1 T_1.318, 4;
+    %load/x1p 8, v0x1cef010_0, 8;
+    %jmp T_1.319;
+T_1.318 ;
     %mov 8, 2, 8;
-T_1.262 ;
+T_1.319 ;
 ; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5280_0, 8, 8;
-    %load/v 8, v0x24b5ae0_0, 8; Only need 8 of 16 bits
+    %set/v v0x1cee5f0_0, 8, 8;
+    %load/v 8, v0x1cef010_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5440_0, 8, 8;
-    %set/v v0x24b5850_0, 1, 1;
-    %load/v 8, v0x2458850_0, 64;
-    %set/v v0x24b50d0_0, 8, 64;
-T_1.259 ;
-T_1.253 ;
-    %jmp T_1.18;
+    %set/v v0x1cee7a0_0, 8, 8;
+    %set/v v0x1ceec10_0, 1, 1;
+T_1.316 ;
+T_1.306 ;
+T_1.282 ;
+    %jmp T_1.17;
+T_1.12 ;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %set/v v0x1cedc40_0, 1, 1;
+    %load/v 8, v0x1cee670_0, 1;
+    %jmp/0xz  T_1.320, 8;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.322, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.323;
+T_1.322 ;
+    %mov 17, 2, 8;
+T_1.323 ;
+    %mov 8, 17, 8; Move signal select into place
+    %mov 16, 0, 1;
+    %cmpi/u 8, 0, 9;
+    %jmp/0xz  T_1.324, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 0, 8;
+    %jmp/0xz  T_1.326, 4;
+    %set/v v0x1cee550_0, 1, 1;
+    %load/v 8, v0x1c64bf0_0, 64;
+    %set/v v0x1cee1c0_0, 8, 64;
+T_1.326 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 1, 8;
+    %jmp/0xz  T_1.328, 4;
+    %set/v v0x1cee550_0, 1, 1;
+T_1.328 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 2, 8;
+    %jmp/0xz  T_1.330, 4;
+    %set/v v0x1cee6f0_0, 1, 1;
+    %load/v 8, v0x1c64bf0_0, 64;
+    %set/v v0x1cee1c0_0, 8, 64;
+T_1.330 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 3, 8;
+    %jmp/0xz  T_1.332, 4;
+    %set/v v0x1cee6f0_0, 1, 1;
+T_1.332 ;
+T_1.324 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.334, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.335;
+T_1.334 ;
+    %mov 17, 2, 8;
+T_1.335 ;
+    %mov 8, 17, 8; Move signal select into place
+    %mov 16, 0, 1;
+    %cmpi/u 8, 0, 9;
+    %inv 4, 1;
+    %jmp/0xz  T_1.336, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 0, 8;
+    %jmp/0xz  T_1.338, 4;
+    %set/v v0x1ceec10_0, 1, 1;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.340, 4;
+    %load/x1p 8, v0x1cef010_0, 8;
+    %jmp T_1.341;
+T_1.340 ;
+    %mov 8, 2, 8;
+T_1.341 ;
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee5f0_0, 8, 8;
+    %load/v 8, v0x1cef010_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee7a0_0, 8, 8;
+    %load/v 8, v0x1c64bf0_0, 64;
+    %set/v v0x1cee1c0_0, 8, 64;
+T_1.338 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 1, 8;
+    %jmp/0xz  T_1.342, 4;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.344, 4;
+    %load/x1p 8, v0x1cef010_0, 8;
+    %jmp T_1.345;
+T_1.344 ;
+    %mov 8, 2, 8;
+T_1.345 ;
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee5f0_0, 8, 8;
+    %load/v 8, v0x1cef010_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee7a0_0, 8, 8;
+    %set/v v0x1ceec10_0, 1, 1;
+    %load/v 8, v0x1c64bf0_0, 64;
+    %set/v v0x1cee1c0_0, 8, 64;
+T_1.342 ;
+T_1.336 ;
+T_1.320 ;
+    %jmp T_1.17;
+T_1.13 ;
+    %set/v v0x1cedc40_0, 1, 1;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %load/v 8, v0x1cee670_0, 1;
+    %jmp/0xz  T_1.346, 8;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.348, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.349;
+T_1.348 ;
+    %mov 17, 2, 8;
+T_1.349 ;
+    %mov 8, 17, 8; Move signal select into place
+    %mov 16, 0, 1;
+    %cmpi/u 8, 0, 9;
+    %jmp/0xz  T_1.350, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 0, 8;
+    %jmp/0xz  T_1.352, 4;
+    %set/v v0x1cee550_0, 1, 1;
+T_1.352 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 2, 8;
+    %jmp/0xz  T_1.354, 4;
+    %set/v v0x1cee6f0_0, 1, 1;
+T_1.354 ;
+T_1.350 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.356, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.357;
+T_1.356 ;
+    %mov 17, 2, 8;
+T_1.357 ;
+    %mov 8, 17, 8; Move signal select into place
+    %mov 16, 0, 1;
+    %cmpi/u 8, 0, 9;
+    %inv 4, 1;
+    %jmp/0xz  T_1.358, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 0, 8;
+    %jmp/0xz  T_1.360, 4;
+    %set/v v0x1ceec10_0, 1, 1;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.362, 4;
+    %load/x1p 8, v0x1cef010_0, 8;
+    %jmp T_1.363;
+T_1.362 ;
+    %mov 8, 2, 8;
+T_1.363 ;
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee5f0_0, 8, 8;
+    %load/v 8, v0x1cef010_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee7a0_0, 8, 8;
+T_1.360 ;
+T_1.358 ;
+T_1.346 ;
+    %jmp T_1.17;
 T_1.14 ;
-    %jmp T_1.18;
+    %set/v v0x1cedc40_0, 1, 1;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %load/v 8, v0x1cee670_0, 1;
+    %jmp/0xz  T_1.364, 8;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.366, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.367;
+T_1.366 ;
+    %mov 17, 2, 8;
+T_1.367 ;
+    %mov 8, 17, 8; Move signal select into place
+    %mov 16, 0, 1;
+    %cmpi/u 8, 0, 9;
+    %jmp/0xz  T_1.368, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 0, 8;
+    %jmp/0xz  T_1.370, 4;
+    %set/v v0x1cee550_0, 1, 1;
+    %load/v 8, v0x1cee980_0, 32;
+    %set/v v0x1cee120_0, 8, 32;
+T_1.370 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 2, 8;
+    %jmp/0xz  T_1.372, 4;
+    %set/v v0x1cee6f0_0, 1, 1;
+    %load/v 8, v0x1cee980_0, 32;
+    %set/v v0x1cee120_0, 8, 32;
+T_1.372 ;
+T_1.368 ;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.374, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.375;
+T_1.374 ;
+    %mov 17, 2, 8;
+T_1.375 ;
+    %mov 8, 17, 8; Move signal select into place
+    %mov 16, 0, 1;
+    %cmpi/u 8, 0, 9;
+    %inv 4, 1;
+    %jmp/0xz  T_1.376, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %cmpi/u 8, 0, 8;
+    %jmp/0xz  T_1.378, 4;
+    %set/v v0x1ceec10_0, 1, 1;
+    %ix/load 1, 8, 0;
+    %mov 4, 0, 1;
+    %jmp/1 T_1.380, 4;
+    %load/x1p 8, v0x1cef010_0, 8;
+    %jmp T_1.381;
+T_1.380 ;
+    %mov 8, 2, 8;
+T_1.381 ;
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee5f0_0, 8, 8;
+    %load/v 8, v0x1cef010_0, 8; Only need 8 of 16 bits
+; Save base=8 wid=8 in lookaside.
+    %set/v v0x1cee7a0_0, 8, 8;
+    %load/v 8, v0x1cee980_0, 32;
+    %set/v v0x1cee120_0, 8, 32;
+T_1.378 ;
+T_1.376 ;
+T_1.364 ;
+    %jmp T_1.17;
 T_1.15 ;
+    %set/v v0x1cedc40_0, 1, 1;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %load/v 8, v0x1cee670_0, 1;
+    %jmp/0xz  T_1.382, 8;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.263, 4;
-    %load/x1p 17, v0x24b5ae0_0, 8;
-    %jmp T_1.264;
-T_1.263 ;
+    %jmp/1 T_1.384, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.385;
+T_1.384 ;
     %mov 17, 2, 8;
-T_1.264 ;
+T_1.385 ;
     %mov 8, 17, 8; Move signal select into place
     %mov 16, 0, 1;
     %cmpi/u 8, 0, 9;
-    %jmp/0xz  T_1.265, 4;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %jmp/0xz  T_1.386, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 0, 8;
-    %jmp/0xz  T_1.267, 4;
-    %set/v v0x24b5320_0, 1, 1;
-    %load/v 8, v0x24b57d0_0, 32;
-    %set/v v0x24b4fd0_0, 8, 32;
-T_1.267 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %jmp/0xz  T_1.388, 4;
+    %set/v v0x1cee550_0, 1, 1;
+    %load/v 8, v0x1cede70_0, 15; Only need 15 of 32 bits
+; Save base=8 wid=15 in lookaside.
+    %ix/load 0, 0, 0;
+    %set/x0 v0x1cee2e0_0, 8, 15;
+T_1.388 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 2, 8;
-    %jmp/0xz  T_1.269, 4;
-    %set/v v0x24b54e0_0, 1, 1;
-    %load/v 8, v0x24b57d0_0, 32;
-    %set/v v0x24b4fd0_0, 8, 32;
-T_1.269 ;
-T_1.265 ;
+    %jmp/0xz  T_1.390, 4;
+    %set/v v0x1cee6f0_0, 1, 1;
+    %load/v 8, v0x1cede70_0, 15; Only need 15 of 32 bits
+; Save base=8 wid=15 in lookaside.
+    %ix/load 0, 0, 0;
+    %set/x0 v0x1cee2e0_0, 8, 15;
+T_1.390 ;
+T_1.386 ;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.271, 4;
-    %load/x1p 17, v0x24b5ae0_0, 8;
-    %jmp T_1.272;
-T_1.271 ;
+    %jmp/1 T_1.392, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.393;
+T_1.392 ;
     %mov 17, 2, 8;
-T_1.272 ;
+T_1.393 ;
     %mov 8, 17, 8; Move signal select into place
     %mov 16, 0, 1;
     %cmpi/u 8, 0, 9;
     %inv 4, 1;
-    %jmp/0xz  T_1.273, 4;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %jmp/0xz  T_1.394, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 0, 8;
-    %jmp/0xz  T_1.275, 4;
-    %set/v v0x24b5850_0, 1, 1;
+    %jmp/0xz  T_1.396, 4;
+    %set/v v0x1ceec10_0, 1, 1;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.277, 4;
-    %load/x1p 8, v0x24b5ae0_0, 8;
-    %jmp T_1.278;
-T_1.277 ;
+    %jmp/1 T_1.398, 4;
+    %load/x1p 8, v0x1cef010_0, 8;
+    %jmp T_1.399;
+T_1.398 ;
     %mov 8, 2, 8;
-T_1.278 ;
+T_1.399 ;
 ; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5280_0, 8, 8;
-    %load/v 8, v0x24b5ae0_0, 8; Only need 8 of 16 bits
+    %set/v v0x1cee5f0_0, 8, 8;
+    %load/v 8, v0x1cef010_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5440_0, 8, 8;
-    %load/v 8, v0x24b57d0_0, 32;
-    %set/v v0x24b4fd0_0, 8, 32;
-T_1.275 ;
-T_1.273 ;
-    %jmp T_1.18;
+    %set/v v0x1cee7a0_0, 8, 8;
+    %load/v 8, v0x1cede70_0, 15; Only need 15 of 32 bits
+; Save base=8 wid=15 in lookaside.
+    %ix/load 0, 0, 0;
+    %set/x0 v0x1cee2e0_0, 8, 15;
+T_1.396 ;
+T_1.394 ;
+T_1.382 ;
+    %jmp T_1.17;
 T_1.16 ;
-    %jmp T_1.18;
-T_1.17 ;
+    %set/v v0x1cedc40_0, 1, 1;
+    %movi 8, 1, 5;
+    %set/v v0x1cee8e0_0, 8, 5;
+    %load/v 8, v0x1cee670_0, 1;
+    %jmp/0xz  T_1.400, 8;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.279, 4;
-    %load/x1p 17, v0x24b5ae0_0, 8;
-    %jmp T_1.280;
-T_1.279 ;
+    %jmp/1 T_1.402, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.403;
+T_1.402 ;
     %mov 17, 2, 8;
-T_1.280 ;
+T_1.403 ;
     %mov 8, 17, 8; Move signal select into place
     %mov 16, 0, 1;
     %cmpi/u 8, 0, 9;
-    %jmp/0xz  T_1.281, 4;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %jmp/0xz  T_1.404, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 0, 8;
-    %jmp/0xz  T_1.283, 4;
-    %set/v v0x24b5320_0, 1, 1;
-    %load/v 8, v0x24b4da0_0, 32;
-    %set/v v0x24b4fd0_0, 8, 32;
-T_1.283 ;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %jmp/0xz  T_1.406, 4;
+    %set/v v0x1cee550_0, 1, 1;
+    %load/v 8, v0x1ceddd0_0, 32;
+    %set/v v0x1cee120_0, 8, 32;
+T_1.406 ;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 2, 8;
-    %jmp/0xz  T_1.285, 4;
-    %set/v v0x24b54e0_0, 1, 1;
-    %load/v 8, v0x24b4da0_0, 32;
-    %set/v v0x24b4fd0_0, 8, 32;
-T_1.285 ;
-T_1.281 ;
+    %jmp/0xz  T_1.408, 4;
+    %set/v v0x1cee6f0_0, 1, 1;
+    %load/v 8, v0x1ceddd0_0, 32;
+    %set/v v0x1cee120_0, 8, 32;
+T_1.408 ;
+T_1.404 ;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.287, 4;
-    %load/x1p 17, v0x24b5ae0_0, 8;
-    %jmp T_1.288;
-T_1.287 ;
+    %jmp/1 T_1.410, 4;
+    %load/x1p 17, v0x1cef010_0, 8;
+    %jmp T_1.411;
+T_1.410 ;
     %mov 17, 2, 8;
-T_1.288 ;
+T_1.411 ;
     %mov 8, 17, 8; Move signal select into place
     %mov 16, 0, 1;
     %cmpi/u 8, 0, 9;
     %inv 4, 1;
-    %jmp/0xz  T_1.289, 4;
-    %load/v 8, v0x24b5c30_0, 8; Only need 8 of 16 bits
+    %jmp/0xz  T_1.412, 4;
+    %load/v 8, v0x1cef1b0_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
     %cmpi/u 8, 0, 8;
-    %jmp/0xz  T_1.291, 4;
-    %set/v v0x24b5850_0, 1, 1;
+    %jmp/0xz  T_1.414, 4;
+    %set/v v0x1ceec10_0, 1, 1;
     %ix/load 1, 8, 0;
     %mov 4, 0, 1;
-    %jmp/1 T_1.293, 4;
-    %load/x1p 8, v0x24b5ae0_0, 8;
-    %jmp T_1.294;
-T_1.293 ;
+    %jmp/1 T_1.416, 4;
+    %load/x1p 8, v0x1cef010_0, 8;
+    %jmp T_1.417;
+T_1.416 ;
     %mov 8, 2, 8;
-T_1.294 ;
+T_1.417 ;
 ; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5280_0, 8, 8;
-    %load/v 8, v0x24b5ae0_0, 8; Only need 8 of 16 bits
+    %set/v v0x1cee5f0_0, 8, 8;
+    %load/v 8, v0x1cef010_0, 8; Only need 8 of 16 bits
 ; Save base=8 wid=8 in lookaside.
-    %set/v v0x24b5440_0, 8, 8;
-    %load/v 8, v0x24b4da0_0, 32;
-    %set/v v0x24b4fd0_0, 8, 32;
-T_1.291 ;
-T_1.289 ;
-    %jmp T_1.18;
-T_1.18 ;
+    %set/v v0x1cee7a0_0, 8, 8;
+    %load/v 8, v0x1ceddd0_0, 32;
+    %set/v v0x1cee120_0, 8, 32;
+T_1.414 ;
+T_1.412 ;
+T_1.400 ;
+    %jmp T_1.17;
+T_1.17 ;
     %jmp T_1;
     .thread T_1;
+    .scope S_0x1caa930;
+T_2 ;
+    %set/v v0x1cef3e0_0, 0, 1;
+    %end;
+    .thread T_2;
+    .scope S_0x1caa930;
+T_3 ;
+    %delay 1, 0;
+    %load/v 8, v0x1cef3e0_0, 1;
+    %inv 8, 1;
+    %set/v v0x1cef3e0_0, 8, 1;
+    %jmp T_3;
+    .thread T_3;
+    .scope S_0x1caa930;
+T_4 ;
+    %wait E_0x1ccd910;
+    %load/v 8, v0x1cef360_0, 8;
+    %ix/load 0, 56, 0;
+    %set/x0 v0x1cef460_0, 8, 8;
+    %load/v 8, v0x1cef090_0, 8;
+    %mov 16, 0, 1;
+    %ix/load 0, 47, 0;
+    %set/x0 v0x1cef460_0, 8, 9;
+    %load/v 8, v0x1cef810_0, 16;
+    %ix/load 0, 33, 0;
+    %set/x0 v0x1cef460_0, 8, 14;
+    %load/v 8, v0x1cef710_0, 16;
+    %mov 24, 0, 1;
+    %ix/load 0, 16, 0;
+    %set/x0 v0x1cef460_0, 8, 17;
+    %load/v 8, v0x1cef790_0, 16;
+    %ix/load 0, 0, 0;
+    %set/x0 v0x1cef460_0, 8, 16;
+    %jmp T_4;
+    .thread T_4, $push;
+    .scope S_0x1caa930;
+T_5 ;
+    %vpi_call 2 32 "$dumpfile", "tester.vcd";
+    %vpi_call 2 33 "$dumpvars", 1'sb0, S_0x1caa930;
+    %set/v v0x1cef660_0, 1, 1;
+    %delay 5, 0;
+    %set/v v0x1cef660_0, 0, 1;
+    %set/v v0x1cef460_0, 0, 64;
+    %movi 8, 1, 32;
+    %set/v v0x1cef560_0, 8, 32;
+    %movi 8, 12, 64;
+    %set/v v0x1cef5e0_0, 8, 64;
+    %movi 8, 33, 8;
+    %set/v v0x1cef360_0, 8, 8;
+    %movi 8, 3, 8;
+    %set/v v0x1cef090_0, 8, 8;
+    %set/v v0x1cef810_0, 0, 16;
+    %set/v v0x1cef710_0, 0, 16;
+    %movi 8, 2, 16;
+    %set/v v0x1cef790_0, 8, 16;
+    %set/v v0x1cef4e0_0, 1, 1;
+    %delay 5, 0;
+    %set/v v0x1cef660_0, 0, 1;
+    %set/v v0x1cef460_0, 0, 64;
+    %movi 8, 1, 32;
+    %set/v v0x1cef560_0, 8, 32;
+    %set/v v0x1cef5e0_0, 0, 64;
+    %movi 8, 161, 8;
+    %set/v v0x1cef360_0, 8, 8;
+    %movi 8, 131, 8;
+    %set/v v0x1cef090_0, 8, 8;
+    %set/v v0x1cef810_0, 0, 16;
+    %set/v v0x1cef710_0, 0, 16;
+    %movi 8, 2, 16;
+    %set/v v0x1cef790_0, 8, 16;
+    %set/v v0x1cef4e0_0, 1, 1;
+    %delay 513, 0;
+    %vpi_call 2 60 "$finish";
+    %end;
+    .thread T_5;
 # The file index is used to find the file name in the following table.
-:file_names 3;
+:file_names 4;
     "N/A";
     "<interactive>";
+    "control_TB.v";
     "control.v";
