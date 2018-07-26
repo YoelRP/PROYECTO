@@ -1,8 +1,12 @@
 module inv(
-  in
+  in,
   out   );
-    output reg  out;
+    output reg out;
     input wire in ;
-assign out = ~in ;
+
+  always @(*)
+begin
+  out = ~in ;
+  end
 
 endmodule

@@ -13,7 +13,14 @@ module FF_scan(
 
   always @(posedge clk)
     begin
-   if (SE== 0 ) Q =  D else Q = SD;
-    end
+    if (SE== 0 ) 
+	   begin
+	     Q = D;
+	   end
+	else
+	   begin
+	     Q = SD; 
+	   end
+   end
 
 endmodule
