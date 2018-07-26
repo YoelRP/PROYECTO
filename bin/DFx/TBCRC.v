@@ -4,7 +4,7 @@ module tester;
 
   reg [10:0] rmesaj = 1024'hFFFAFF;
   reg [4:0] crcBASE = 15'b0;
-  wire [4:0] wcrc ;
+  wire [4:0] wcrc ;##@
 
 
   initial begin

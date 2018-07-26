@@ -1,5 +1,8 @@
 module tester;
-
+reg 
+reg
+reg
+reg
 reg rclk = 0;
 always #1 rclk = rclk;
 
