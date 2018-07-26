@@ -22,7 +22,7 @@ module CRC5_D11(
   crc
   );
     output reg [4:0] nextCRC5_D11;
-    input wire [10:0] Data;
+        input wire [10:0] Data;
     input wire [4:0] crc;
     reg [10:0] d;
     reg [4:0] c;
