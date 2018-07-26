@@ -12,62 +12,61 @@ always #1 rclk = rclk;
      # 513 $finish;
   end
 
+  FF_scan FF_scan_intance0(
+  .clk(rclk),
+  .SE(rSE),
+  .SD(rSD),
+  .D(),
+  .Q
+  );
 
  FF_scan FF_scan_intance1(
-  .clk,
-  .SE,
-  .SD,
-  .D,
+  .clk(rclk),
+  .SE(rSE),
+  .SD(rSD),
+  .D(wQ0),
   .Q
   );
  FF_scan FF_scan_intance2(
-  .clk,
-  .SE,
-  .SD,
-  .D,
+  .clk(rclk),
+  .SE(rSE),
+  .SD(rSD),
+  .D(),
   .Q
   );
  FF_scan FF_scan_intance3(
-  .clk,
-  .SE,
-  .SD,
-  .D,
+  .clk(rclk),
+  .SE(rSE),
+  .SD(rSD),
+  .D(),
   .Q
   ); 
  FF_scan FF_scan_intance4(
-  .clk,
-  .SE,
-  .SD,
-  .D,
+  .clk(rclk),
+  .SE(rSE),
+  .SD(rSD),
+  .D(),
   .Q
   );
 
  FF_scan FF_scan_intance5(
-  .clk,
-  .SE,
-  .SD,
-  .D,
+  .clk(rclk),
+  .SE(rSE),
+  .SD(rSD),
+  .D(),
   .Q
   );
  FF_scan FF_scan_intance6(
-  .clk,
-  .SE,
-  .SD,
-  .D,
+  .clk(rclk),
+  .SE(rSE),
+  .SD(rSD),
+  .D(),
   .Q
   );
  FF_scan FF_scan_intance7(
-  .clk,
-  .SE,
-  .SD,
-  .D,
-  .Q
-  );
-
-  FF_scan FF_scan_intance8(
-  .clk,
-  .SE,
-  .SD,
-  .D,
+  .clk(rclk),
+  .SE(rSE),
+  .SD(rSD),
+  .D(),
   .Q
   );
