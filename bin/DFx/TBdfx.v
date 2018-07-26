@@ -3,6 +3,7 @@ reg rSE;
 reg rSD;
 reg rD;
 reg rclk = 0;
+
 wire [7:0] wQ ;
 always #1 rclk = rclk;
 
@@ -17,56 +18,99 @@ always #1 rclk = rclk;
   .SE(rSE),
   .SD(rSD),
   .D(),
-  .Q
+  .Q(wQ[0])
   );
+
+inv intance0(
+  .in()
+  .out()  );
+
+
 
  FF_scan FF_scan_intance1(
   .clk(rclk),
   .SE(rSE),
   .SD(rSD),
-  .D(wQ0),
-  .Q
+  .D(),
+  .Q(wQ[1])
   );
+
+
+inv intance0(
+  .in()
+  .out()  );
+
  FF_scan FF_scan_intance2(
   .clk(rclk),
   .SE(rSE),
-  .SD(rSD),
+  .SD(wQ[1]),
   .D(),
-  .Q
+  .Q(wQ[2])
   );
+
+
+inv intance0(
+  .in()
+  .out()  );
+
+
  FF_scan FF_scan_intance3(
   .clk(rclk),
   .SE(rSE),
-  .SD(rSD),
+  .SD(wQ[2]),
   .D(),
-  .Q
+  .Q(wQ[3])
   ); 
+
+
+inv intance0(
+  .in()
+  .out()  );
  FF_scan FF_scan_intance4(
   .clk(rclk),
   .SE(rSE),
-  .SD(rSD),
+  .SD(wQ[3]),
   .D(),
-  .Q
+  .Q(wQ[4])
   );
+
+inv intance0(
+  .in()
+  .out()  );
+
 
  FF_scan FF_scan_intance5(
   .clk(rclk),
   .SE(rSE),
-  .SD(rSD),
+  .SD(wQ[4]),
   .D(),
-  .Q
+  .Q(wQ[5])
   );
+
+
+inv intance0(
+  .in()
+  .out()  );
+
+
  FF_scan FF_scan_intance6(
   .clk(rclk),
   .SE(rSE),
-  .SD(rSD),
+  .SD(wQ[5]),
   .D(),
-  .Q
+  .Q(wQ[6])
   );
+
+
+inv intance0(
+  .in()
+  .out()  );
+
+
  FF_scan FF_scan_intance7(
   .clk(rclk),
   .SE(rSE),
-  .SD(rSD),
+  .SD(wQ[6]),
   .D(),
-  .Q
+  .Q(wQ[7])
   );
