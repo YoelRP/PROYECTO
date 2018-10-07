@@ -8,6 +8,8 @@ data_out,
 data_out3,
 parameter_Block,
 parameter_Block2,
+debug_Unit_ID,
+interface_ID,
 enable
 );
 input wire  enable;
@@ -229,6 +231,8 @@ config_data = 31'b10000110011111;
 						if (wValue[7:0] == 8'h00 ) // global DBclass
 						begin
 						global = 1 ;
+						debug_Unit_ID = wIndex[15:8] ;
+							interface_ID = wIndex[7:0] ;
 						if (singl_data == 0 )
 							begin
 								count =8;
@@ -279,6 +283,8 @@ config_data = 31'b10000110011111;
 							//Si lector este tamaño lo define usted 
 							global = 1 ;
 							next_state = IDLE;
+							debug_Unit_ID = wIndex[15:8] ;
+							interface_ID = wIndex[7:0] ;
 						end 
 						if (wValue[7:0] == 8'h02 ) // local DBclass
 						begin
@@ -396,7 +402,8 @@ config_data = 31'b10000110011111;
 				SET_CONFIG_DATA :
 				begin
 				busy = 1;
-
+				debug_Unit_ID = wIndex[15:8] ;
+				interface_ID = wIndex[7:0] ;
 				if (enable) 
 				begin	
 					if (wIndex[15:8] == 0)
@@ -509,6 +516,8 @@ config_data = 31'b10000110011111;
 			SET_CONFIG_ADDRESS:
 			begin
 			busy = 1;	
+			debug_Unit_ID = wIndex[15:8] ;
+			interface_ID = wIndex[7:0] ;
 				if (enable) 
 				begin
 					if (wIndex[15:8] == 0)
@@ -562,12 +571,16 @@ config_data = 31'b10000110011111;
 			SET_ALT_STACK :
 			begin
 			busy = 1;	
+			debug_Unit_ID = wIndex[15:8] ;
+			interface_ID = wIndex[7:0] ;
 			//this is difine by the vendor 
 			next_state = IDLE;
 			
 			end
 			SET_OPERATING_MODE :
 			begin
+			debug_Unit_ID = wIndex[15:8] ;
+		 	interface_ID = wIndex[7:0] ;
 			busy = 1;	
 				if (enable) 
 				begin
@@ -610,6 +623,8 @@ config_data = 31'b10000110011111;
 			SET_TRACE :
 			begin
 			busy = 1;
+			debug_Unit_ID = wIndex[15:8] ;
+			interface_ID = wIndex[7:0] ;
 			next_state = IDLE;
 			if (enable) 
 			begin	
@@ -649,6 +664,9 @@ config_data = 31'b10000110011111;
 			begin
 				busy = 1;
 				next_state = IDLE;
+			debug_Unit_ID = wIndex[15:8] ;
+			interface_ID = wIndex[7:0] ;
+			
 				if (enable) 
 				begin	
 				if (wIndex[15:8] == 0)
@@ -689,6 +707,9 @@ config_data = 31'b10000110011111;
 			begin
 			busy = 1;
 			next_state = IDLE;
+			debug_Unit_ID = wIndex[15:8] ;
+			interface_ID = wIndex[7:0] ;
+			
 			if (enable) 
 			begin	
 				if (wIndex[15:8] == 0)
@@ -727,6 +748,8 @@ config_data = 31'b10000110011111;
 			end
 			SET_RESET :
 			begin
+			debug_Unit_ID = wIndex[15:8] ;
+			interface_ID = wIndex[7:0] ;
 			next_state = IDLE;
 				if (enable) 
 				begin
@@ -764,6 +787,9 @@ config_data = 31'b10000110011111;
 			GET_CONFIG_DATA:
 			begin
 			busy = 1;
+			debug_Unit_ID = wIndex[15:8] ;
+			interface_ID = wIndex[7:0] ;
+			
 				if (enable) 
 				begin	
 					if (wIndex[15:8] == 0)
@@ -859,6 +885,8 @@ config_data = 31'b10000110011111;
 
 			GET_CONFIG_ADDRESS :
 			begin
+			debug_Unit_ID = wIndex[15:8] ;
+			interface_ID = wIndex[7:0] ;
 			next_state = IDLE;
 				busy = 1;	
 				if (enable) 
@@ -913,6 +941,8 @@ config_data = 31'b10000110011111;
 			
 			GET_ALT_STACK :
 			begin
+				debug_Unit_ID = wIndex[15:8] ;
+				interface_ID = wIndex[7:0] ;
 				busy = 1;	
 				next_state = IDLE;
 				if (enable) 
@@ -951,6 +981,9 @@ config_data = 31'b10000110011111;
 			end
 			GET_OPERATION_MODE :
 			begin
+				debug_Unit_ID = wIndex[15:8] ;
+			interface_ID = wIndex[7:0] ;
+			
 				busy = 1;
 				next_state = IDLE;
 				if (enable) 
@@ -1004,6 +1037,8 @@ config_data = 31'b10000110011111;
 			
 			GET_TRACE :
 			begin
+				debug_Unit_ID = wIndex[15:8] ;
+				interface_ID = wIndex[7:0] ;
 				busy = 1;
 				next_state = IDLE;	
 				if (enable) 
@@ -1065,6 +1100,9 @@ config_data = 31'b10000110011111;
 
 					*/
 			begin
+			debug_Unit_ID = wIndex[15:8] ;
+			interface_ID = wIndex[7:0] ;
+			
 			busy = 1;
 			next_state = IDLE;
 			if (enable) 

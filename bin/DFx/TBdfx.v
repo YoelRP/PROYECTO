@@ -1,14 +1,11 @@
 module tester;
 reg rSE ;
-    reg rSD ;
-    reg rD;
-
-
-
+reg rSD ;
+reg rD;
 
 wire [7:0] wQ ;
 wire [7:0] OutInv ;
-
+//Clock definition 
 reg rclk = 1;
 always #1 rclk = !rclk;
 
