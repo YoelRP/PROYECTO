@@ -10,6 +10,9 @@ parameter_Block,
 parameter_Block2,
 debug_Unit_ID,
 interface_ID,
+local,
+global,
+specific,
 enable
 );
 input wire  enable;
@@ -23,7 +26,7 @@ output reg [63:0]data_out2;
 output reg [15:0] data_out3; 
 output reg [63:0] address;
 output reg [63:0] buffer_command;
-output reg [31:0] config_trace; 
+output reg [15:0] config_trace; 
 output reg local;
 output reg global; 
 output reg specific; 
@@ -32,7 +35,7 @@ output reg [7:0]  interface_ID;
 output reg [31:0] readWrite;
 output reg busy;
 
-
+reg [15:0] error_reg
 reg [7:0] bmRequestType ;
 reg [7:0] bRequest ;
 reg [15:0] count; 
@@ -84,6 +87,7 @@ begin
 	    begin  if (rst) begin  #1 state =  IDLE;  end
 	    else   begin #1 state =  next_state;  end
 	end
+if (busy = 1)	
 end	
 
 
