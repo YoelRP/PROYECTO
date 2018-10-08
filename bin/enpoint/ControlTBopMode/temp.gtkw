@@ -1,0 +1,73 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Mon Oct  8 03:50:05 2018
+[*]
+[dumpfile] "/home/yoe/PROYECTO/bin/enpoint/ControlTBgettrace/tester.vcd"
+[dumpfile_mtime] "Mon Oct  8 03:45:09 2018"
+[dumpfile_size] 11329
+[savefile] "/home/yoe/PROYECTO/bin/enpoint/ControlTBgettrace/temp.gtkw"
+[timestart] 0
+[size] 1853 920
+[pos] 1699 0
+*-3.000000 53 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tester.
+[sst_width] 225
+[signals_width] 214
+[sst_expanded] 1
+[sst_vpaned_height] 267
+@28
+tester.control_intance.clk
+@22
+tester.control_intance.state[4:0]
+tester.control_intance.next_state[4:0]
+tester.control_intance.bRequest[7:0]
+@c00022
+tester.control_intance.config_trace[15:0]
+@28
+(0)tester.control_intance.config_trace[15:0]
+(1)tester.control_intance.config_trace[15:0]
+(2)tester.control_intance.config_trace[15:0]
+(3)tester.control_intance.config_trace[15:0]
+(4)tester.control_intance.config_trace[15:0]
+(5)tester.control_intance.config_trace[15:0]
+(6)tester.control_intance.config_trace[15:0]
+(7)tester.control_intance.config_trace[15:0]
+(8)tester.control_intance.config_trace[15:0]
+(9)tester.control_intance.config_trace[15:0]
+(10)tester.control_intance.config_trace[15:0]
+(11)tester.control_intance.config_trace[15:0]
+(12)tester.control_intance.config_trace[15:0]
+(13)tester.control_intance.config_trace[15:0]
+(14)tester.control_intance.config_trace[15:0]
+(15)tester.control_intance.config_trace[15:0]
+@1401200
+-group_end
+@28
+tester.control_intance.specific
+tester.control_intance.global
+tester.control_intance.local
+@c00022
+tester.control_intance.error_reg[15:0]
+@28
+(0)tester.control_intance.error_reg[15:0]
+(1)tester.control_intance.error_reg[15:0]
+(2)tester.control_intance.error_reg[15:0]
+(3)tester.control_intance.error_reg[15:0]
+(4)tester.control_intance.error_reg[15:0]
+(5)tester.control_intance.error_reg[15:0]
+(6)tester.control_intance.error_reg[15:0]
+(7)tester.control_intance.error_reg[15:0]
+(8)tester.control_intance.error_reg[15:0]
+(9)tester.control_intance.error_reg[15:0]
+(10)tester.control_intance.error_reg[15:0]
+(11)tester.control_intance.error_reg[15:0]
+(12)tester.control_intance.error_reg[15:0]
+(13)tester.control_intance.error_reg[15:0]
+(14)tester.control_intance.error_reg[15:0]
+(15)tester.control_intance.error_reg[15:0]
+@1401200
+-group_end
+@23
+tester.control_intance.wIndex[15:0]
+[pattern_trace] 1
+[pattern_trace] 0

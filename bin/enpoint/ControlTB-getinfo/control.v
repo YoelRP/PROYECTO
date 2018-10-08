@@ -46,12 +46,15 @@ output reg [15:0] config_trace;
 output reg local;
 output reg global; 
 output reg specific; 
-
+output reg busy;
 //cuando no afecta a toda la configuracion se usan la interface o al debug unit especico a la cual se dirige elcomando 
 output reg [7:0] debug_Unit_ID;
 output reg [7:0]  interface_ID;
-output reg [8:0] rSelect;
-output reg busy;
+//output reg [8:0] rSelect;output reg busy;
+//envia el reset a un endpoint 
+
+output reg reset_endpoint;
+//
 
 reg [15:0] error_reg;
 reg [7:0] bmRequestType ;
@@ -69,7 +72,7 @@ reg [31:0] config_data;
 
 reg [63:0]	tempoadress;
 reg [31:0] dato;
-reg reset_endpoint;
+
 
 reg [4:0]state,next_state;
 parameter [4:0]
@@ -107,6 +110,10 @@ begin
 	if (busy == 1)
 	begin
 		error_reg =15'b1;
+	end
+	else 
+	begin
+		error_reg = 0;
 	end
 end	
 
@@ -653,7 +660,7 @@ config_data = 31'b10000110011111;
 				if (wIndex[15:8] == 0)
 					begin 
 						//lo unico que hace es poner el valor en config_trace que ees el valor que se va a envia al trace 
-							config_trace[14:0] = wIndex[15:0];
+							config_trace[15:0] = wIndex[15:0];
 						
 						
 					end	

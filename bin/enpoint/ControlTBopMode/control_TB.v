@@ -36,27 +36,17 @@ always @(rclk)
        #5 
        rrst =0 ;
 	 rdata = 0;
-  	 rparameter_Block = 1;
-     rparameter_Block2 = 12;
+  	 //rparameter_Block = 1;
+    // rparameter_Block2 = 12;
 	  rbmRequestType [7:0] = 8'b00100001;
-	  rbRequest  = 8'h03 ;
+	  rbRequest  = 8'h05 ;
 	  rwValue = 0;
 	  rwIndex = 0;
 	  rwLength = 2;
 	 renable = 1 ;
-       #5 
-       rrst =0 ;
-	 rdata = 0;
-  	 rparameter_Block = 1;
-     rparameter_Block2 = 0;
+	 #5
 	  rbmRequestType [7:0] = 8'b10100001;
-	  rbRequest  = 8'h83 ;
-	  rwValue = 0;
-	  rwIndex = 0;
-	  rwLength = 2;
-	 renable = 1 ;
-	
-
+	  rbRequest  = 8'h85 ;
 	  # 513 $finish;
   end
 control control_intance (
