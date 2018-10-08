@@ -38,7 +38,7 @@ output reg [15:0] data_out16;
 output reg [63:0] address;
 //
 output reg [63:0] buffer_command;
-
+output reg [7:0] bRequest ;
 output reg [31:0] wset_optmode;
 output reg [15:0] config_trace;
 
@@ -55,7 +55,6 @@ output reg busy;
 
 reg [15:0] error_reg;
 reg [7:0] bmRequestType ;
-reg [7:0] bRequest ;
 reg [15:0] count; 
 
 reg [15:0] wValue;
@@ -1046,7 +1045,7 @@ config_data = 31'b10000110011111;
 					if (wIndex[15:8] == 0)
 					begin
 															
-
+						data_out16 =parameter_Block16;
 					 
 						
 					end
