@@ -1,0 +1,117 @@
+[*]
+[*] GTKWave Analyzer v3.3.66 (w)1999-2015 BSI
+[*] Tue Jan 23 10:00:56 2018
+[*]
+[dumpfile] "/home/yoe/PROYECTO/bin/enpoint/Control/tester.vcd"
+[dumpfile_mtime] "Tue Jan 23 09:55:48 2018"
+[dumpfile_size] 43845
+[savefile] "/home/yoe/PROYECTO/bin/enpoint/Control/temp.gtkw"
+[timestart] 0
+[size] 1364 714
+[pos] 35 0
+*-3.000000 13 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tester.
+[sst_width] 225
+[signals_width] 214
+[sst_expanded] 1
+[sst_vpaned_height] 193
+@22
+tester.rbRequest[7:0]
+tester.rbmRequestType[7:0]
+@28
+tester.rclk
+@22
+tester.rdata[63:0]
+@28
+tester.renable
+@22
+tester.rparameter_Block2[63:0]
+tester.rparameter_Block[31:0]
+tester.control_intance.dato[31:0]
+@28
+tester.rrst
+tester.control_intance.state[4:0]
+tester.control_intance.next_state[4:0]
+@22
+tester.control_intance.bmRequestType[7:0]
+@23
+tester.control_intance.bRequest[7:0]
+@22
+tester.control_intance.data[63:0]
+@c00022
+tester.control_intance.address[63:0]
+@28
+(0)tester.control_intance.address[63:0]
+(1)tester.control_intance.address[63:0]
+(2)tester.control_intance.address[63:0]
+(3)tester.control_intance.address[63:0]
+(4)tester.control_intance.address[63:0]
+(5)tester.control_intance.address[63:0]
+(6)tester.control_intance.address[63:0]
+(7)tester.control_intance.address[63:0]
+(8)tester.control_intance.address[63:0]
+(9)tester.control_intance.address[63:0]
+(10)tester.control_intance.address[63:0]
+(11)tester.control_intance.address[63:0]
+(12)tester.control_intance.address[63:0]
+(13)tester.control_intance.address[63:0]
+(14)tester.control_intance.address[63:0]
+(15)tester.control_intance.address[63:0]
+(16)tester.control_intance.address[63:0]
+(17)tester.control_intance.address[63:0]
+(18)tester.control_intance.address[63:0]
+(19)tester.control_intance.address[63:0]
+(20)tester.control_intance.address[63:0]
+(21)tester.control_intance.address[63:0]
+(22)tester.control_intance.address[63:0]
+(23)tester.control_intance.address[63:0]
+(24)tester.control_intance.address[63:0]
+(25)tester.control_intance.address[63:0]
+(26)tester.control_intance.address[63:0]
+(27)tester.control_intance.address[63:0]
+(28)tester.control_intance.address[63:0]
+(29)tester.control_intance.address[63:0]
+(30)tester.control_intance.address[63:0]
+(31)tester.control_intance.address[63:0]
+(32)tester.control_intance.address[63:0]
+(33)tester.control_intance.address[63:0]
+(34)tester.control_intance.address[63:0]
+(35)tester.control_intance.address[63:0]
+(36)tester.control_intance.address[63:0]
+(37)tester.control_intance.address[63:0]
+(38)tester.control_intance.address[63:0]
+(39)tester.control_intance.address[63:0]
+(40)tester.control_intance.address[63:0]
+(41)tester.control_intance.address[63:0]
+(42)tester.control_intance.address[63:0]
+(43)tester.control_intance.address[63:0]
+(44)tester.control_intance.address[63:0]
+(45)tester.control_intance.address[63:0]
+(46)tester.control_intance.address[63:0]
+(47)tester.control_intance.address[63:0]
+(48)tester.control_intance.address[63:0]
+(49)tester.control_intance.address[63:0]
+(50)tester.control_intance.address[63:0]
+(51)tester.control_intance.address[63:0]
+(52)tester.control_intance.address[63:0]
+(53)tester.control_intance.address[63:0]
+(54)tester.control_intance.address[63:0]
+(55)tester.control_intance.address[63:0]
+(56)tester.control_intance.address[63:0]
+(57)tester.control_intance.address[63:0]
+(58)tester.control_intance.address[63:0]
+(59)tester.control_intance.address[63:0]
+(60)tester.control_intance.address[63:0]
+(61)tester.control_intance.address[63:0]
+(62)tester.control_intance.address[63:0]
+(63)tester.control_intance.address[63:0]
+@1401200
+-group_end
+@28
+tester.control_intance.busy
+tester.control_intance.enable
+tester.control_intance.singl_data
+@22
+tester.control_intance.count[15:0]
+[pattern_trace] 1
+[pattern_trace] 0

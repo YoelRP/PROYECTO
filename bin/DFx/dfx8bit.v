@@ -12,7 +12,7 @@ module FF_scan8(
     input wire rSE;
     input wire rclk;
     input wire rSD;
-
+    
 always @(posedge rclk) begin
 	 Q8 = wQ[7] ;
 end
