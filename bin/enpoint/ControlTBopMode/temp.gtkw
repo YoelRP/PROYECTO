@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
-[*] Mon Oct  8 03:50:05 2018
+[*] Mon Oct  8 05:15:58 2018
 [*]
-[dumpfile] "/home/yoe/PROYECTO/bin/enpoint/ControlTBgettrace/tester.vcd"
-[dumpfile_mtime] "Mon Oct  8 03:45:09 2018"
-[dumpfile_size] 11329
-[savefile] "/home/yoe/PROYECTO/bin/enpoint/ControlTBgettrace/temp.gtkw"
+[dumpfile] "/home/yoe/PROYECTO/bin/enpoint/ControlTBopMode/tester.vcd"
+[dumpfile_mtime] "Mon Oct  8 05:10:33 2018"
+[dumpfile_size] 11782
+[savefile] "/home/yoe/PROYECTO/bin/enpoint/ControlTBopMode/temp.gtkw"
 [timestart] 0
-[size] 1853 920
-[pos] 1699 0
-*-3.000000 53 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[size] 927 920
+[pos] 2625 0
+*-3.000000 15 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tester.
 [sst_width] 225
 [signals_width] 214
@@ -46,6 +46,8 @@ tester.control_intance.config_trace[15:0]
 tester.control_intance.specific
 tester.control_intance.global
 tester.control_intance.local
+@22
+tester.control_intance.wIndex[15:0]
 @c00022
 tester.control_intance.error_reg[15:0]
 @28
@@ -67,7 +69,10 @@ tester.control_intance.error_reg[15:0]
 (15)tester.control_intance.error_reg[15:0]
 @1401200
 -group_end
+@22
+tester.control_intance.wget_optmode[31:0]
+tester.control_intance.wset_optmode[31:0]
 @23
-tester.control_intance.wIndex[15:0]
+tester.control_intance.parameter_Block32[31:0]
 [pattern_trace] 1
 [pattern_trace] 0

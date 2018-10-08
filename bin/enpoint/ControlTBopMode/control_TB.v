@@ -14,7 +14,7 @@ module tester;
 	wire [31:0] wdata_out;
 	wire [63:0] wdata_out2;
 	wire [15:0] wdata_out3; 
- 	
+ 	reg [31:0] rget_optmode;
 reg rclk = 0;
 always #1 rclk = !rclk;
 	
@@ -36,7 +36,7 @@ always @(rclk)
        #5 
        rrst =0 ;
 	 rdata = 0;
-  	 //rparameter_Block = 1;
+  	 rparameter_Block = 32'b11;
     // rparameter_Block2 = 12;
 	  rbmRequestType [7:0] = 8'b00100001;
 	  rbRequest  = 8'h05 ;
@@ -47,6 +47,10 @@ always @(rclk)
 	 #5
 	  rbmRequestType [7:0] = 8'b10100001;
 	  rbRequest  = 8'h85 ;
+	  rget_optmode = 32'b11;
+	  #7
+	  rwIndex = 1;
+	   rget_optmode = 32'b111;
 	  # 513 $finish;
   end
 control control_intance (
@@ -59,7 +63,8 @@ control control_intance (
 .data_out16 			(wdata_out3),
 .parameter_Block32	(rparameter_Block),
 .parameter_Block64 	(rparameter_Block2),
-.enable              (renable)
+.enable              (renable),
+.wget_optmode         (rget_optmode)
 );
 
 
